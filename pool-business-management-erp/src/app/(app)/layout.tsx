@@ -3,7 +3,11 @@ import Header from "@/components/header";
 import { stockData, financialData } from "@/lib/queries";
 import { cookies } from "next/headers";
 
-export default async function AppLayout({ children }: { children: React.ReactNode }) {
+export default async function AppLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [user, business] = await Promise.all([session(), company()]);
   const [stock, fin] = await Promise.all([stockData(), financialData()]);
   const alerts = [
@@ -16,7 +20,13 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         tone: "red",
       })),
     ...(fin.overdueReceiveCount > 0
-      ? [{ title: `${fin.overdueReceiveCount} contas a receber vencidas`, desc: "Cobrança recomendada hoje", tone: "amber" }]
+      ? [
+          {
+            title: `${fin.overdueReceiveCount} contas a receber vencidas`,
+            desc: "Cobrança recomendada hoje",
+            tone: "amber",
+          },
+        ]
       : []),
   ];
 
@@ -36,7 +46,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           <div>
             <span className="font-extrabold text-ink-500">PoolControl</span>
             <span className="mx-1.5">© 2026</span>|
-            <span className="ml-1.5">Gestão para negócios que constroem bem-estar.</span>
+            <span className="ml-1.5">
+              Gestão para negócios que constroem bem-estar.
+            </span>
           </div>
           <div className="flex items-center gap-2.5">
             <span>Confiança</span>•<span>Pessoas</span>•<span>Piscinas</span>•

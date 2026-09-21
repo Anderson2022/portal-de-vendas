@@ -10,6 +10,16 @@ export default async function EstoquePage({
   searchParams: Promise<{ f?: string; status?: string }>;
 }) {
   const { f = "", status = "" } = await searchParams;
-  const [s, productOptions] = await Promise.all([stockData(), getProductOptions()]);
-  return <StockOverview s={s} filter={f} status={status} productOptions={productOptions} />;
+  const [s, productOptions] = await Promise.all([
+    stockData(),
+    getProductOptions(),
+  ]);
+  return (
+    <StockOverview
+      s={s}
+      filter={f}
+      status={status}
+      productOptions={productOptions}
+    />
+  );
 }

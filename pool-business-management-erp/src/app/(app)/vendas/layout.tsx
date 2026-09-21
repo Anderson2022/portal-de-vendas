@@ -11,7 +11,11 @@ const items: SideItem[] = [
   { href: "/vendas/relatorios", label: "Relatórios", icon: "chart" },
 ];
 
-export default function VendasLayout({ children }: { children: React.ReactNode }) {
+export default function VendasLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <ModuleShell
       brand="vendas"
@@ -24,7 +28,8 @@ export default function VendasLayout({ children }: { children: React.ReactNode }
             backgroundImage: "url(/images/water-caustics.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            boxShadow: "inset 0 1px 0 rgba(255,255,255,.8), 0 14px 28px -14px rgba(13,132,192,.5)",
+            boxShadow:
+              "inset 0 1px 0 rgba(255,255,255,.8), 0 14px 28px -14px rgba(13,132,192,.5)",
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-white/55 to-white/25" />
@@ -33,7 +38,9 @@ export default function VendasLayout({ children }: { children: React.ReactNode }
             <p className="font-display mt-2 text-[19px] leading-snug text-ink-900">
               Mais negócios hoje. Mais piscinas amanhã.
             </p>
-            <div className="mt-3 text-[8.5px] font-extrabold tracking-[0.3em] text-ink-500">POOLCONTROL</div>
+            <div className="mt-3 text-[8.5px] font-extrabold tracking-[0.3em] text-ink-500">
+              POOLCONTROL
+            </div>
           </div>
         </div>
       }
