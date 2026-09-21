@@ -1,8 +1,7 @@
 package br.com.poolcontrol.auth.controller;
+
 import br.com.poolcontrol.auth.dto.LoginRequest;
 import br.com.poolcontrol.auth.dto.LoginResponse;
-
-
 
 import br.com.poolcontrol.auth.service.AuthService;
 import br.com.poolcontrol.shared.security.CurrentUser;

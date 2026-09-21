@@ -1,7 +1,6 @@
 package br.com.poolcontrol.user.controller;
+
 import br.com.poolcontrol.user.entity.User;
-
-
 
 import br.com.poolcontrol.user.dto.UserCreateRequest;
 import br.com.poolcontrol.user.dto.UserPasswordRequest;

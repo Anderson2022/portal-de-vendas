@@ -1,8 +1,7 @@
 package br.com.poolcontrol.catalog.controller;
+
 import br.com.poolcontrol.catalog.dto.ProductCategoryRequest;
 import br.com.poolcontrol.catalog.entity.Product;
-
-
 
 import br.com.poolcontrol.catalog.entity.ProductCategory;
 import br.com.poolcontrol.catalog.repository.ProductCategoryRepository;

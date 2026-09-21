@@ -17,15 +17,31 @@ function smoothPath(pts: { x: number; y: number }[]) {
 }
 
 export function AreaChart({
-  data, data2, id, height = 230, format,
+  data,
+  data2,
+  id,
+  height = 230,
+  format,
 }: {
-  data: number[]; data2?: number[]; id: string; height?: number; format?: (v: number) => string;
+  data: number[];
+  data2?: number[];
+  id: string;
+  height?: number;
+  format?: (v: number) => string;
 }) {
-  const W = 760, H = height, pad = 8;
+  const W = 760,
+    H = height,
+    pad = 8;
   const max = Math.max(...data, ...(data2 ?? [0])) * 1.15 || 1;
   const step = (W - pad * 2) / (data.length - 1);
-  const pts = data.map((v, i) => ({ x: pad + i * step, y: H - 26 - (v / max) * (H - 50) }));
-  const pts2 = data2?.map((v, i) => ({ x: pad + i * step, y: H - 26 - (v / max) * (H - 50) }));
+  const pts = data.map((v, i) => ({
+    x: pad + i * step,
+    y: H - 26 - (v / max) * (H - 50),
+  }));
+  const pts2 = data2?.map((v, i) => ({
+    x: pad + i * step,
+    y: H - 26 - (v / max) * (H - 50),
+  }));
   const line = smoothPath(pts);
   const line2 = pts2 ? smoothPath(pts2) : "";
   const area = `${line} L ${pts[pts.length - 1].x} ${H - 26} L ${pts[0].x} ${H - 26} Z`;
@@ -43,20 +59,59 @@ export function AreaChart({
         </linearGradient>
       </defs>
       {[0.25, 0.5, 0.75].map((f) => (
-        <line key={f} x1={pad} x2={W - pad} y1={(H - 26) * f + 6} y2={(H - 26) * f + 6} stroke="#113a5e" strokeOpacity="0.07" strokeDasharray="3 5" />
+        <line
+          key={f}
+          x1={pad}
+          x2={W - pad}
+          y1={(H - 26) * f + 6}
+          y2={(H - 26) * f + 6}
+          stroke="#113a5e"
+          strokeOpacity="0.07"
+          strokeDasharray="3 5"
+        />
       ))}
       <path d={area} fill={`url(#${id}-fill)`} />
-      <path d={line} fill="none" stroke={`url(#${id}-line)`} strokeWidth="3" strokeLinecap="round" />
-      {line2 && <path d={line2} fill="none" stroke="#90abc3" strokeWidth="2.5" strokeDasharray="6 5" strokeLinecap="round" />}
+      <path
+        d={line}
+        fill="none"
+        stroke={`url(#${id}-line)`}
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+      {line2 && (
+        <path
+          d={line2}
+          fill="none"
+          stroke="#90abc3"
+          strokeWidth="2.5"
+          strokeDasharray="6 5"
+          strokeLinecap="round"
+        />
+      )}
       {pts.map((p, i) => (
         <g key={i}>
-          <circle cx={p.x} cy={p.y} r="4.5" fill="#fff" stroke="#0d84c0" strokeWidth="2.5">
+          <circle
+            cx={p.x}
+            cy={p.y}
+            r="4.5"
+            fill="#fff"
+            stroke="#0d84c0"
+            strokeWidth="2.5"
+          >
             <title>{format ? format(data[i]) : String(data[i])}</title>
           </circle>
         </g>
       ))}
       {labels.map((i) => (
-        <text key={i} x={pts[i].x} y={H - 8} textAnchor="middle" fontSize="11" fontWeight="700" fill="#7c99b5">
+        <text
+          key={i}
+          x={pts[i].x}
+          y={H - 8}
+          textAnchor="middle"
+          fontSize="11"
+          fontWeight="700"
+          fill="#7c99b5"
+        >
           {MONTHS_SHORT[i % MONTHS_SHORT.length]}
         </text>
       ))}
@@ -64,5 +119,17 @@ export function AreaChart({
   );
 }
 
-const MONTHS_SHORT = ["Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Jan", "Fev", "Mar", "Abr", "Mai"];
-
+const MONTHS_SHORT = [
+  "Jun",
+  "Jul",
+  "Ago",
+  "Set",
+  "Out",
+  "Nov",
+  "Dez",
+  "Jan",
+  "Fev",
+  "Mar",
+  "Abr",
+  "Mai",
+];

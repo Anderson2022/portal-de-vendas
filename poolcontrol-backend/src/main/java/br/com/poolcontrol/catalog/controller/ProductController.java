@@ -1,7 +1,6 @@
 package br.com.poolcontrol.catalog.controller;
+
 import br.com.poolcontrol.catalog.dto.ProductRequest;
-
-
 
 import br.com.poolcontrol.catalog.service.ProductService;
 import br.com.poolcontrol.catalog.entity.Product;

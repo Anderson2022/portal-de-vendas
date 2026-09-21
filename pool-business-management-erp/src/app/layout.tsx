@@ -21,7 +21,11 @@ export const metadata: Metadata = {
     "ERP vertical para empresas de piscinas: vendas com margem real, comissões, estoque, financeiro e ordens de serviço.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="pt-BR" className={`${instrument.variable} ${manrope.variable}`}>
       <body>{children}</body>

@@ -1,7 +1,6 @@
 package br.com.poolcontrol.pool.controller;
+
 import br.com.poolcontrol.pool.dto.PoolRequest;
-
-
 
 import br.com.poolcontrol.pool.service.PoolService;
 import br.com.poolcontrol.pool.entity.CustomerPool;

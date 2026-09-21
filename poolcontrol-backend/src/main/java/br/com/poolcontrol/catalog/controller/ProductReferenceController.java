@@ -17,14 +17,33 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ProductReferenceController {
     private final ProductReferenceService service;
+
     @GetMapping("/{kind}")
-    public List<ProductReferenceResponse> list(@PathVariable String kind) { return service.list(kind); }
-    @PostMapping("/{kind}") @ResponseStatus(HttpStatus.CREATED)
-    public ProductReferenceResponse create(@PathVariable String kind, @Valid @RequestBody ProductReferenceRequest request) { return service.create(kind, request); }
+    public List<ProductReferenceResponse> list(@PathVariable String kind) {
+        return service.list(kind);
+    }
+
+    @PostMapping("/{kind}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ProductReferenceResponse create(@PathVariable String kind,
+            @Valid @RequestBody ProductReferenceRequest request) {
+        return service.create(kind, request);
+    }
+
     @GetMapping("/{kind}/{id}")
-    public Map<String, Object> get(@PathVariable String kind, @PathVariable Long id) { return service.get(kind, id); }
+    public Map<String, Object> get(@PathVariable String kind, @PathVariable Long id) {
+        return service.get(kind, id);
+    }
+
     @PutMapping("/{kind}/{id}")
-    public ProductReferenceResponse update(@PathVariable String kind, @PathVariable Long id, @Valid @RequestBody ProductReferenceRequest request) { return service.update(kind, id, request); }
-    @DeleteMapping("/{kind}/{id}") @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable String kind, @PathVariable Long id) { service.delete(kind, id); }
+    public ProductReferenceResponse update(@PathVariable String kind, @PathVariable Long id,
+            @Valid @RequestBody ProductReferenceRequest request) {
+        return service.update(kind, id, request);
+    }
+
+    @DeleteMapping("/{kind}/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable String kind, @PathVariable Long id) {
+        service.delete(kind, id);
+    }
 }
