@@ -1,0 +1,21 @@
+package br.com.poolcontrol.catalog.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import java.math.BigDecimal;
+
+public record ProductReferenceRequest(
+        @NotBlank String name, String code, String description, String documentNumber,
+        String phone, String email, String address, String city, String state,
+        String website, String notes, Boolean active, Long parentCategoryId,
+        String seoDescription, String coverImage, Integer displayOrder,
+        Boolean batchControlled, Boolean expirationControlled, Boolean serialControlled,
+        Boolean allowNegativeStock, BigDecimal defaultMinimumStock, BigDecimal defaultMaximumStock,
+        BigDecimal defaultSafetyStock, String defaultIssueMethod, Integer inactiveDays,
+        String externalCode, Boolean automaticId, Long requestedId, Boolean automaticCode,
+        String shortName, Long manufacturerId, String logoUrl,
+        String unitSymbol, String unitType, Integer decimalPlaces,
+        Long baseUnitId, BigDecimal conversionFactor,
+        Boolean physicalProduct, Boolean stockControlled, Boolean purchaseAllowed,
+        Boolean saleAllowed, Boolean batchControl, Boolean expirationControl,
+        Boolean serialControl, String fiscalItemTypeCode
+) {}

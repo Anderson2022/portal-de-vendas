@@ -1,0 +1,3 @@
+package br.com.poolcontrol.financeiro.api;
+import br.com.poolcontrol.financeiro.api.dto.TransferenciaRequest; import br.com.poolcontrol.financeiro.service.TransferService; import jakarta.validation.Valid; import lombok.RequiredArgsConstructor; import org.springframework.http.*; import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api/financeiro/transferencias") @RequiredArgsConstructor public class TransferController { private final TransferService service; @PostMapping public ResponseEntity<Void> transfer(@Valid @RequestBody TransferenciaRequest r){service.transfer(r); return ResponseEntity.noContent().build();} }

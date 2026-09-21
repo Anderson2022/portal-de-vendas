@@ -1,0 +1,59 @@
+@baseUrl = http://localhost:8080
+@token = COLE_O_TOKEN_AQUI
+
+### Health
+GET {{baseUrl}}/actuator/health
+
+### Login
+POST {{baseUrl}}/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@poolcontrol.local",
+  "password": "Admin@123"
+}
+
+### Usuário atual
+GET {{baseUrl}}/api/v1/auth/me
+Authorization: Bearer {{token}}
+
+### Criar cliente
+POST {{baseUrl}}/api/v1/customers
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "João da Silva",
+  "documentNumber": "12345678900",
+  "phone": "65999999999",
+  "whatsapp": "65999999999",
+  "email": "joao@email.com",
+  "city": "Cuiabá",
+  "state": "MT",
+  "source": "Instagram"
+}
+
+### Criar categoria
+POST {{baseUrl}}/api/v1/product-categories
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Piscinas"
+}
+
+### Produtos
+GET {{baseUrl}}/api/v1/products
+Authorization: Bearer {{token}}
+
+### Estoque
+GET {{baseUrl}}/api/v1/inventory
+Authorization: Bearer {{token}}
+
+### Dashboard
+GET {{baseUrl}}/api/v1/dashboard/summary
+Authorization: Bearer {{token}}
+
+### Ranking
+GET {{baseUrl}}/api/v1/dashboard/salespeople
+Authorization: Bearer {{token}}

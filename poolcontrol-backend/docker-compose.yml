@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: poolcontrol-postgres
+    environment:
+      POSTGRES_DB: poolcontrol_numerico2
+      POSTGRES_USER: pool_local
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5433:5432"
+    volumes:
+      - poolcontrol_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pool_local -d poolcontrol_numerico2"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    image: redis:8-alpine
+    container_name: poolcontrol-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - poolcontrol_redis:/data
+
+  minio:
+    image: minio/minio:latest
+    container_name: poolcontrol-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: poolcontrol
+      MINIO_ROOT_PASSWORD: poolcontrol123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - poolcontrol_minio:/data
+
+volumes:
+  poolcontrol_pgdata:
+  poolcontrol_redis:
+  poolcontrol_minio:

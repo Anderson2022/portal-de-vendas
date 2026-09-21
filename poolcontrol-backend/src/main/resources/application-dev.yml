@@ -1,0 +1,10 @@
+logging:
+  level:
+    br.com.poolcontrol: DEBUG
+    org.hibernate.SQL: DEBUG
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true

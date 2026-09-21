@@ -1,0 +1,5 @@
+ALTER TABLE niveis
+    ADD COLUMN IF NOT EXISTS descricao TEXT;
+
+ALTER TABLE posicoes
+    ADD COLUMN IF NOT EXISTS descricao TEXT;

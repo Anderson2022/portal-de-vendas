@@ -1,0 +1,5 @@
+ALTER TABLE depositos ADD COLUMN tipo VARCHAR(30) NOT NULL DEFAULT 'ESTOQUE';
+ALTER TABLE localizacoes_estoque ADD COLUMN nome VARCHAR(140), ADD COLUMN permite_armazenagem BOOLEAN NOT NULL DEFAULT TRUE,
+ ADD COLUMN permite_picking BOOLEAN NOT NULL DEFAULT TRUE, ADD COLUMN bloqueada BOOLEAN NOT NULL DEFAULT FALSE,
+ ADD COLUMN capacidade NUMERIC(18,6), ADD COLUMN observacao TEXT;
+UPDATE localizacoes_estoque SET nome=coalesce(descricao,codigo) WHERE nome IS NULL;

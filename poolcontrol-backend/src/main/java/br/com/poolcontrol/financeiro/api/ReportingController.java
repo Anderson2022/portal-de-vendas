@@ -1,0 +1,4 @@
+package br.com.poolcontrol.financeiro.api;
+import br.com.poolcontrol.financeiro.api.dto.*; import br.com.poolcontrol.financeiro.service.ReportingService; import lombok.RequiredArgsConstructor; import org.springframework.web.bind.annotation.*; import java.time.LocalDate; import java.util.*;
+@RestController @RequestMapping("/api/financeiro/relatorios") @RequiredArgsConstructor public class ReportingController { private final ReportingService service;
+ @GetMapping("/dashboard") public DashboardResponse dashboard(@RequestParam UUID empresaId,@RequestParam LocalDate inicio,@RequestParam LocalDate fim){return service.dashboard(empresaId,inicio,fim);} @GetMapping("/dre") public List<DreLinha> dre(@RequestParam UUID empresaId,@RequestParam LocalDate inicio,@RequestParam LocalDate fim){return service.dre(empresaId,inicio,fim);} }

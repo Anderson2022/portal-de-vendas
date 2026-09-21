@@ -1,0 +1,14 @@
+poolcontrol:
+  bootstrap:
+    enabled: false
+
+logging:
+  level:
+    root: INFO
+    br.com.poolcontrol: INFO
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        format_sql: false

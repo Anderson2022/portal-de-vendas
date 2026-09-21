@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.env*
+.local-postgres/
+.npm-cache/
+*.log
+*.tsbuildinfo
+artifacts/
+test-results/
+playwright-report/
+.local/
+build/
