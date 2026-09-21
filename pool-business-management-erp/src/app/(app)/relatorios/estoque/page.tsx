@@ -9,12 +9,56 @@ import {
 import { Card, PageIntro } from "@/components/ui";
 
 const groups = [
-  { title: "Estoque", icon: Boxes, items: ["Posição atual", "Estoque por depósito", "Estoque por localização", "Estoque por categoria", "Estoque por marca", "Estoque por lote"] },
-  { title: "Movimentação", icon: RefreshCw, items: ["Entradas", "Saídas", "Transferências", "Ajustes de estoque", "Movimentação por usuário"] },
-  { title: "Gestão", icon: BarChart3, items: ["Curva ABC", "Giro de estoque", "Cobertura", "Estoque parado", "Rupturas", "Capital imobilizado"] },
-  { title: "Inventário", icon: ClipboardList, items: ["Acuracidade", "Divergências", "Ajustes de inventário"] },
-  { title: "Validade", icon: Timer, items: ["Próximos do vencimento", "Produtos vencidos"] },
-  { title: "Auditoria", icon: ShieldCheck, items: ["Operações por usuário", "Alterações por documento"] },
+  {
+    title: "Estoque",
+    icon: Boxes,
+    items: [
+      "Posição atual",
+      "Estoque por depósito",
+      "Estoque por localização",
+      "Estoque por categoria",
+      "Estoque por marca",
+      "Estoque por lote",
+    ],
+  },
+  {
+    title: "Movimentação",
+    icon: RefreshCw,
+    items: [
+      "Entradas",
+      "Saídas",
+      "Transferências",
+      "Ajustes de estoque",
+      "Movimentação por usuário",
+    ],
+  },
+  {
+    title: "Gestão",
+    icon: BarChart3,
+    items: [
+      "Curva ABC",
+      "Giro de estoque",
+      "Cobertura",
+      "Estoque parado",
+      "Rupturas",
+      "Capital imobilizado",
+    ],
+  },
+  {
+    title: "Inventário",
+    icon: ClipboardList,
+    items: ["Acuracidade", "Divergências", "Ajustes de inventário"],
+  },
+  {
+    title: "Validade",
+    icon: Timer,
+    items: ["Próximos do vencimento", "Produtos vencidos"],
+  },
+  {
+    title: "Auditoria",
+    icon: ShieldCheck,
+    items: ["Operações por usuário", "Alterações por documento"],
+  },
 ];
 
 export default function StockReportsPage() {
@@ -40,7 +84,11 @@ export default function StockReportsPage() {
               </div>
               <div className="grid gap-2">
                 {group.items.map((item) => (
-                  <button key={item} type="button" className="rounded-xl bg-white/40 px-3 py-2 text-left text-sm font-semibold hover:bg-white/70">
+                  <button
+                    key={item}
+                    type="button"
+                    className="rounded-xl bg-white/40 px-3 py-2 text-left text-sm font-semibold hover:bg-white/70"
+                  >
                     {item}
                   </button>
                 ))}

@@ -15,5 +15,5 @@ public class FinancialAttachment extends BaseEntity {
 @Column(name="mime_type",length=120) private String mimeType;
 @Column(nullable=false,columnDefinition="text") private String url;
 @Column(name="tamanho_bytes") private Long tamanhoBytes;
-@Column(name="criado_por") private UUID criadoPor;
+@Column(name="criado_por") private Long criadoPor;
 }

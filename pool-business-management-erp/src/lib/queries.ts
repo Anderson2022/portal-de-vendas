@@ -1,7 +1,7 @@
 import { backendData } from "./backend/data";
 import { MONTH, PREVIOUS_MONTH, n } from "./format";
 
-export const MONTHS_SERIES = Array.from({length:12},(_,i)=>{const d=new Date(MONTH+'-01T12:00:00Z');d.setUTCMonth(d.getUTCMonth()-11+i);return d.toISOString().slice(0,7);});
+export const MONTHS_SERIES = Array.from({ length: 12 }, (_, i) => { const d = new Date(MONTH + '-01T12:00:00Z'); d.setUTCMonth(d.getUTCMonth() - 11 + i); return d.toISOString().slice(0, 7); });
 const base = backendData;
 const custName = (cust: { id: string; name: string }[], id: string | null) =>
   cust.find((c) => c.id === id)?.name ?? "—";
@@ -207,8 +207,8 @@ export async function stockData() {
     const available = p.stock - p.reserved;
     const status =
       available <= 0 ? "RUPTURA"
-      : available < p.minStock ? "CRITICO"
-      : available < p.minStock * 1.4 ? "BAIXO" : "OK";
+        : available < p.minStock ? "CRITICO"
+          : available < p.minStock * 1.4 ? "BAIXO" : "OK";
     return {
       ...p,
       available,

@@ -60,8 +60,7 @@ public class BootstrapData implements CommandLineRunner {
                 "VENDEDOR", PermissionCatalog.SELLER,
                 "FINANCEIRO", PermissionCatalog.FINANCIAL,
                 "ESTOQUISTA", PermissionCatalog.STOCK,
-                "TECNICO", PermissionCatalog.TECHNICIAN
-        );
+                "TECNICO", PermissionCatalog.TECHNICIAN);
 
         Set<Role> roles = new HashSet<>();
 

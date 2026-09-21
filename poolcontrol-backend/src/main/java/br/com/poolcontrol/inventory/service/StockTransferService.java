@@ -1,4 +1,5 @@
 package br.com.poolcontrol.inventory.service;
+
 import br.com.poolcontrol.inventory.dto.StockTransferRequest;
 import br.com.poolcontrol.shared.exception.BusinessException;
 import br.com.poolcontrol.shared.security.CurrentUserService;
@@ -8,32 +9,137 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.*;
 import java.util.*;
-@Service @RequiredArgsConstructor
-public class StockTransferService {
- private final JdbcClient jdbc; private final CurrentUserService currentUser;
- public List<Map<String,Object>> list(){return jdbc.sql("SELECT id,numero,status,deposito_origem_id,deposito_destino_id,motivo,criado_em FROM transferencias_estoque WHERE empresa_id=:company ORDER BY id DESC").param("company",currentUser.companyId()).query().listOfRows();}
- public List<Map<String,Object>> reasons(){return jdbc.sql("SELECT codigo code,nome name FROM motivos_transferencia WHERE empresa_id=:company AND ativo ORDER BY nome").param("company",currentUser.companyId()).query().listOfRows();}
- public Map<String,Object> createReason(String code,String name){if(code==null||code.isBlank()||name==null||name.isBlank())throw new BusinessException("Informe o código e a descrição do motivo.");return jdbc.sql("INSERT INTO motivos_transferencia(empresa_id,codigo,nome) VALUES (:company,upper(:code),:name) RETURNING id,codigo code,nome name").param("company",currentUser.companyId()).param("code",code.trim()).param("name",name.trim()).query().singleRow();}
- public Map<String,Object> createLocation(Long warehouseId,String code,String name){if(code==null||code.isBlank()||name==null||name.isBlank())throw new BusinessException("Informe o código e a descrição da localização.");boolean warehouse=jdbc.sql("SELECT EXISTS(SELECT 1 FROM depositos WHERE id=:id AND empresa_id=:company AND active)").param("id",warehouseId).param("company",currentUser.companyId()).query(Boolean.class).single();if(!warehouse)throw new BusinessException("Depósito inválido para a empresa atual.");return jdbc.sql("INSERT INTO localizacoes_estoque(empresa_id,deposito_id,codigo,descricao) VALUES (:company,:warehouse,upper(:code),:name) RETURNING id,codigo,descricao name").param("company",currentUser.companyId()).param("warehouse",warehouseId).param("code",code.trim()).param("name",name.trim()).query().singleRow();}
- public Map<String,Object> productInfo(Long productId,Long warehouseId){long company=currentUser.companyId();var product=jdbc.sql("SELECT p.id,p.unit_id,coalesce(t.controla_lote,false) controla_lote,coalesce(t.controla_validade,false) controla_validade,coalesce(t.controla_serie,false) controla_serie FROM produtos p LEFT JOIN tipos_produto t ON t.id=p.product_type_id WHERE p.id=:product AND p.empresa_id=:company").param("product",productId).param("company",company).query().singleRow();BigDecimal available=jdbc.sql("SELECT coalesce(sum(quantidade_fisica-quantidade_reservada-quantidade_bloqueada),0) FROM estoques_saldos WHERE empresa_id=:company AND produto_id=:product AND deposito_id=:warehouse").param("company",company).param("product",productId).param("warehouse",warehouseId).query(BigDecimal.class).single();var conversions=jdbc.sql("SELECT pu.unidade_medida_id unit_id,u.name,u.sigla,pu.fator_conversao factor,pu.unidade_base FROM produto_unidades_medida pu JOIN unidades_medida u ON u.id=pu.unidade_medida_id WHERE pu.produto_id=:product AND pu.ativo ORDER BY pu.unidade_base DESC,u.name").param("product",productId).query().listOfRows();return Map.of("product",product,"available",available,"conversions",conversions);}
- public Map<String,Object> productOrigin(Long productId){return jdbc.sql("SELECT coalesce(p.default_warehouse_id,(SELECT es.deposito_id FROM estoques_saldos es WHERE es.empresa_id=p.empresa_id AND es.produto_id=p.id AND es.deposito_id IS NOT NULL GROUP BY es.deposito_id HAVING sum(es.quantidade_fisica)>0 ORDER BY sum(es.quantidade_fisica) DESC LIMIT 1)) warehouse_id,coalesce(p.default_location_id,(SELECT l.id FROM localizacoes_estoque l WHERE l.empresa_id=p.empresa_id AND l.deposito_id=p.default_warehouse_id AND l.ativo AND (l.codigo=p.details_json::jsonb->>'location' OR l.descricao=p.details_json::jsonb->>'location') LIMIT 1)) location_id FROM produtos p WHERE p.id=:product AND p.empresa_id=:company").param("product",productId).param("company",currentUser.companyId()).query().singleRow();}
- private void validateLocation(Long locationId,Long warehouseId){if(locationId==null)return;boolean valid=jdbc.sql("SELECT EXISTS(SELECT 1 FROM localizacoes_estoque WHERE id=:id AND deposito_id=:warehouse AND empresa_id=:company AND ativo)").param("id",locationId).param("warehouse",warehouseId).param("company",currentUser.companyId()).query(Boolean.class).single();if(!valid)throw new BusinessException("A localização não pertence ao depósito selecionado.");}
- @Transactional public Map<String,Object> create(StockTransferRequest request){
-  long company=currentUser.companyId(), user=currentUser.userId();
-  if(request.originWarehouseId().equals(request.destinationWarehouseId()))throw new BusinessException("Origem e destino devem ser diferentes.");
-  long warehouses=jdbc.sql("SELECT count(*) FROM depositos WHERE empresa_id=:company AND id IN (:origin,:destination) AND active").param("company",company).param("origin",request.originWarehouseId()).param("destination",request.destinationWarehouseId()).query(Long.class).single();
-  if(warehouses!=2)throw new BusinessException("Selecione depósitos ativos da empresa atual.");
-  long id=jdbc.sql("SELECT nextval('transferencias_estoque_id_seq')").query(Long.class).single(); String number="TRF-"+java.time.Year.now().getValue()+"-"+String.format("%06d",id);
-  String status=request.requestNow()?"SOLICITADA":"RASCUNHO";
-  jdbc.sql("INSERT INTO transferencias_estoque(id,empresa_id,numero,deposito_origem_id,deposito_destino_id,status,data_solicitacao,solicitado_por,criado_por_usuario_id,motivo,observacao) VALUES (:id,:company,:number,:origin,:destination,:status,:date,:user,:user,:reason,:notes)").param("id",id).param("company",company).param("number",number).param("origin",request.originWarehouseId()).param("destination",request.destinationWarehouseId()).param("status",status).param("date",request.requestNow()?java.time.OffsetDateTime.now():null).param("user",user).param("reason",request.reason()).param("notes",request.notes()).update();
-  for(var item:request.items()){validateLocation(item.originLocationId(),request.originWarehouseId());validateLocation(item.destinationLocationId(),request.destinationWarehouseId());
-   boolean product=jdbc.sql("SELECT EXISTS(SELECT 1 FROM produtos WHERE id=:id AND empresa_id=:company AND active)").param("id",item.productId()).param("company",company).query(Boolean.class).single(); if(!product)throw new BusinessException("Produto inválido para esta empresa.");
-   BigDecimal factor=jdbc.sql("SELECT fator_conversao FROM produto_unidades_medida WHERE produto_id=:product AND unidade_medida_id=:unit AND ativo").param("product",item.productId()).param("unit",item.unitId()).query(BigDecimal.class).optional().orElseThrow(()->new BusinessException("Unidade sem conversão cadastrada para o produto.")); BigDecimal base=item.quantity().multiply(factor);
-   BigDecimal available=jdbc.sql("SELECT coalesce(sum(quantidade_fisica-quantidade_reservada-quantidade_bloqueada),0) FROM estoques_saldos WHERE empresa_id=:company AND produto_id=:product AND deposito_id=:warehouse").param("company",company).param("product",item.productId()).param("warehouse",request.originWarehouseId()).query(BigDecimal.class).single(); if(request.requestNow()&&available.compareTo(base)<0)throw new BusinessException("Estoque disponível insuficiente na origem.");
-   jdbc.sql("INSERT INTO transferencia_itens(transferencia_id,produto_id,localizacao_origem_id,localizacao_destino_id,unidade_medida_id,quantidade_solicitada,fator_conversao,quantidade_base,lote,validade,numero_serie,observacao) VALUES (:transfer,:product,:originLocation,:destinationLocation,:unit,:quantity,:factor,:base,:lot,:expiration,:serial,:notes)").param("transfer",id).param("product",item.productId()).param("originLocation",item.originLocationId()).param("destinationLocation",item.destinationLocationId()).param("unit",item.unitId()).param("quantity",item.quantity()).param("factor",factor).param("base",base).param("lot",item.lot()).param("expiration",item.expiration()).param("serial",item.serialNumber()).param("notes",item.notes()).update();
-   if(request.requestNow())jdbc.sql("INSERT INTO stock_movements(empresa_id,product_id,warehouse_id,type,quantity,unit_cost,total_cost,reference_type,reference_id,created_by,notes,created_at,updated_at) VALUES (:company,:product,:warehouse,'RESERVATION',:quantity,0,0,'TRANSFER',:transfer,:user,:notes,now(),now())").param("company",company).param("product",item.productId()).param("warehouse",request.originWarehouseId()).param("quantity",base).param("transfer",id).param("user",user).param("notes","Reserva da transferência "+number).update();
-  }
-  jdbc.sql("INSERT INTO transferencia_eventos(transferencia_id,status,usuario_id,observacao) VALUES (:id,:status,:user,:notes)").param("id",id).param("status",status).param("user",user).param("notes",request.notes()).update(); return Map.of("id",id,"number",number,"status",status);
- }
-}
 
+@Service
+@RequiredArgsConstructor
+public class StockTransferService {
+    private final JdbcClient jdbc;
+    private final CurrentUserService currentUser;
+
+    public List<Map<String, Object>> list() {
+        return jdbc.sql(
+                "SELECT id,numero,status,deposito_origem_id,deposito_destino_id,motivo,criado_em FROM transferencias_estoque WHERE empresa_id=:company ORDER BY id DESC")
+                .param("company", currentUser.companyId()).query().listOfRows();
+    }
+
+    public List<Map<String, Object>> reasons() {
+        return jdbc.sql(
+                "SELECT codigo code,nome name FROM motivos_transferencia WHERE empresa_id=:company AND ativo ORDER BY nome")
+                .param("company", currentUser.companyId()).query().listOfRows();
+    }
+
+    public Map<String, Object> createReason(String code, String name) {
+        if (code == null || code.isBlank() || name == null || name.isBlank())
+            throw new BusinessException("Informe o código e a descrição do motivo.");
+        return jdbc.sql(
+                "INSERT INTO motivos_transferencia(empresa_id,codigo,nome) VALUES (:company,upper(:code),:name) RETURNING id,codigo code,nome name")
+                .param("company", currentUser.companyId()).param("code", code.trim()).param("name", name.trim()).query()
+                .singleRow();
+    }
+
+    public Map<String, Object> createLocation(Long warehouseId, String code, String name) {
+        if (code == null || code.isBlank() || name == null || name.isBlank())
+            throw new BusinessException("Informe o código e a descrição da localização.");
+        boolean warehouse = jdbc
+                .sql("SELECT EXISTS(SELECT 1 FROM depositos WHERE id=:id AND empresa_id=:company AND active)")
+                .param("id", warehouseId).param("company", currentUser.companyId()).query(Boolean.class).single();
+        if (!warehouse)
+            throw new BusinessException("Depósito inválido para a empresa atual.");
+        return jdbc.sql(
+                "INSERT INTO localizacoes_estoque(empresa_id,deposito_id,codigo,descricao) VALUES (:company,:warehouse,upper(:code),:name) RETURNING id,codigo,descricao name")
+                .param("company", currentUser.companyId()).param("warehouse", warehouseId).param("code", code.trim())
+                .param("name", name.trim()).query().singleRow();
+    }
+
+    public Map<String, Object> productInfo(Long productId, Long warehouseId) {
+        long company = currentUser.companyId();
+        var product = jdbc.sql(
+                "SELECT p.id,p.unit_id,coalesce(t.controla_lote,false) controla_lote,coalesce(t.controla_validade,false) controla_validade,coalesce(t.controla_serie,false) controla_serie FROM produtos p LEFT JOIN tipos_produto t ON t.id=p.product_type_id WHERE p.id=:product AND p.empresa_id=:company")
+                .param("product", productId).param("company", company).query().singleRow();
+        BigDecimal available = jdbc.sql(
+                "SELECT coalesce(sum(quantidade_fisica-quantidade_reservada-quantidade_bloqueada),0) FROM estoques_saldos WHERE empresa_id=:company AND produto_id=:product AND deposito_id=:warehouse")
+                .param("company", company).param("product", productId).param("warehouse", warehouseId)
+                .query(BigDecimal.class).single();
+        var conversions = jdbc.sql(
+                "SELECT pu.unidade_medida_id unit_id,u.name,u.sigla,pu.fator_conversao factor,pu.unidade_base FROM produto_unidades_medida pu JOIN unidades_medida u ON u.id=pu.unidade_medida_id WHERE pu.produto_id=:product AND pu.ativo ORDER BY pu.unidade_base DESC,u.name")
+                .param("product", productId).query().listOfRows();
+        return Map.of("product", product, "available", available, "conversions", conversions);
+    }
+
+    public Map<String, Object> productOrigin(Long productId) {
+        return jdbc.sql(
+                "SELECT coalesce(p.default_warehouse_id,(SELECT es.deposito_id FROM estoques_saldos es WHERE es.empresa_id=p.empresa_id AND es.produto_id=p.id AND es.deposito_id IS NOT NULL GROUP BY es.deposito_id HAVING sum(es.quantidade_fisica)>0 ORDER BY sum(es.quantidade_fisica) DESC LIMIT 1)) warehouse_id,coalesce(p.default_location_id,(SELECT l.id FROM localizacoes_estoque l WHERE l.empresa_id=p.empresa_id AND l.deposito_id=p.default_warehouse_id AND l.ativo AND (l.codigo=p.details_json::jsonb->>'location' OR l.descricao=p.details_json::jsonb->>'location') LIMIT 1)) location_id FROM produtos p WHERE p.id=:product AND p.empresa_id=:company")
+                .param("product", productId).param("company", currentUser.companyId()).query().singleRow();
+    }
+
+    private void validateLocation(Long locationId, Long warehouseId) {
+        if (locationId == null)
+            return;
+        boolean valid = jdbc.sql(
+                "SELECT EXISTS(SELECT 1 FROM localizacoes_estoque WHERE id=:id AND deposito_id=:warehouse AND empresa_id=:company AND ativo)")
+                .param("id", locationId).param("warehouse", warehouseId).param("company", currentUser.companyId())
+                .query(Boolean.class).single();
+        if (!valid)
+            throw new BusinessException("A localização não pertence ao depósito selecionado.");
+    }
+
+    @Transactional
+    public Map<String, Object> create(StockTransferRequest request) {
+        long company = currentUser.companyId(), user = currentUser.userId();
+        if (request.originWarehouseId().equals(request.destinationWarehouseId()))
+            throw new BusinessException("Origem e destino devem ser diferentes.");
+        long warehouses = jdbc.sql(
+                "SELECT count(*) FROM depositos WHERE empresa_id=:company AND id IN (:origin,:destination) AND active")
+                .param("company", company).param("origin", request.originWarehouseId())
+                .param("destination", request.destinationWarehouseId()).query(Long.class).single();
+        if (warehouses != 2)
+            throw new BusinessException("Selecione depósitos ativos da empresa atual.");
+        long id = jdbc.sql("SELECT nextval('transferencias_estoque_id_seq')").query(Long.class).single();
+        String number = "TRF-" + java.time.Year.now().getValue() + "-" + String.format("%06d", id);
+        String status = request.requestNow() ? "SOLICITADA" : "RASCUNHO";
+        jdbc.sql(
+                "INSERT INTO transferencias_estoque(id,empresa_id,numero,deposito_origem_id,deposito_destino_id,status,data_solicitacao,solicitado_por,criado_por_usuario_id,motivo,observacao) VALUES (:id,:company,:number,:origin,:destination,:status,:date,:user,:user,:reason,:notes)")
+                .param("id", id).param("company", company).param("number", number)
+                .param("origin", request.originWarehouseId()).param("destination", request.destinationWarehouseId())
+                .param("status", status).param("date", request.requestNow() ? java.time.OffsetDateTime.now() : null)
+                .param("user", user).param("reason", request.reason()).param("notes", request.notes()).update();
+        for (var item : request.items()) {
+            validateLocation(item.originLocationId(), request.originWarehouseId());
+            validateLocation(item.destinationLocationId(), request.destinationWarehouseId());
+            boolean product = jdbc
+                    .sql("SELECT EXISTS(SELECT 1 FROM produtos WHERE id=:id AND empresa_id=:company AND active)")
+                    .param("id", item.productId()).param("company", company).query(Boolean.class).single();
+            if (!product)
+                throw new BusinessException("Produto inválido para esta empresa.");
+            BigDecimal factor = jdbc.sql(
+                    "SELECT fator_conversao FROM produto_unidades_medida WHERE produto_id=:product AND unidade_medida_id=:unit AND ativo")
+                    .param("product", item.productId()).param("unit", item.unitId()).query(BigDecimal.class).optional()
+                    .orElseThrow(() -> new BusinessException("Unidade sem conversão cadastrada para o produto."));
+            BigDecimal base = item.quantity().multiply(factor);
+            BigDecimal available = jdbc.sql(
+                    "SELECT coalesce(sum(quantidade_fisica-quantidade_reservada-quantidade_bloqueada),0) FROM estoques_saldos WHERE empresa_id=:company AND produto_id=:product AND deposito_id=:warehouse")
+                    .param("company", company).param("product", item.productId())
+                    .param("warehouse", request.originWarehouseId()).query(BigDecimal.class).single();
+            if (request.requestNow() && available.compareTo(base) < 0)
+                throw new BusinessException("Estoque disponível insuficiente na origem.");
+            jdbc.sql(
+                    "INSERT INTO transferencia_itens(transferencia_id,produto_id,localizacao_origem_id,localizacao_destino_id,unidade_medida_id,quantidade_solicitada,fator_conversao,quantidade_base,lote,validade,numero_serie,observacao) VALUES (:transfer,:product,:originLocation,:destinationLocation,:unit,:quantity,:factor,:base,:lot,:expiration,:serial,:notes)")
+                    .param("transfer", id).param("product", item.productId())
+                    .param("originLocation", item.originLocationId())
+                    .param("destinationLocation", item.destinationLocationId()).param("unit", item.unitId())
+                    .param("quantity", item.quantity()).param("factor", factor).param("base", base)
+                    .param("lot", item.lot()).param("expiration", item.expiration())
+                    .param("serial", item.serialNumber()).param("notes", item.notes()).update();
+            if (request.requestNow())
+                jdbc.sql(
+                        "INSERT INTO stock_movements(empresa_id,product_id,warehouse_id,type,quantity,unit_cost,total_cost,reference_type,reference_id,created_by,notes,created_at,updated_at) VALUES (:company,:product,:warehouse,'RESERVATION',:quantity,0,0,'TRANSFER',:transfer,:user,:notes,now(),now())")
+                        .param("company", company).param("product", item.productId())
+                        .param("warehouse", request.originWarehouseId()).param("quantity", base).param("transfer", id)
+                        .param("user", user).param("notes", "Reserva da transferência " + number).update();
+        }
+        jdbc.sql(
+                "INSERT INTO transferencia_eventos(transferencia_id,status,usuario_id,observacao) VALUES (:id,:status,:user,:notes)")
+                .param("id", id).param("status", status).param("user", user).param("notes", request.notes()).update();
+        return Map.of("id", id, "number", number, "status", status);
+    }
+}

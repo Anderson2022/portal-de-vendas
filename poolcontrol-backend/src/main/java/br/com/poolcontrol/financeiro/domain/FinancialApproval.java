@@ -16,8 +16,8 @@ public class FinancialApproval extends BaseEntity {
   @Column(name="regra_id") private UUID regraId;
   @Column(name="nivel",nullable=false) private Integer nivel=1;
   @Enumerated(EnumType.STRING) @Column(nullable=false,length=20) private ApprovalStatus status=ApprovalStatus.PENDENTE;
-  @Column(name="solicitado_por") private UUID solicitadoPor;
-  @Column(name="aprovado_por") private UUID aprovadoPor;
+  @Column(name="solicitado_por") private Long solicitadoPor;
+  @Column(name="aprovado_por") private Long aprovadoPor;
   @Column(name="decidido_em") private OffsetDateTime decididoEm;
   @Column(columnDefinition="text") private String observacoes;
 

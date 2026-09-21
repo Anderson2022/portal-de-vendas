@@ -15,5 +15,5 @@ public class CashMovement extends BaseEntity {
 @Column(nullable=false,precision=19,scale=4) private BigDecimal valor;
 @Column(nullable=false,length=255) private String descricao;
 @Column(name="ocorrido_em",nullable=false) private OffsetDateTime ocorridoEm=OffsetDateTime.now();
-@Column(name="usuario_id") private UUID usuarioId;
+@Column(name="usuario_id") private Long usuarioId;
 }

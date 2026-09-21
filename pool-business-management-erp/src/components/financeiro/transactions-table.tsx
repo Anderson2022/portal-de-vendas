@@ -1,5 +1,5 @@
 import { Ellipsis } from "lucide-react";
-import { money } from "@/lib/utils";
+import { money } from "@/lib/financeiro/utils";
 import { StatusPill } from "./status-pill";
 
 export function TransactionsTable({

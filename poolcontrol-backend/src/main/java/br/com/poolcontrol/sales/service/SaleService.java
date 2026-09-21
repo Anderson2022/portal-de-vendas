@@ -1,4 +1,5 @@
 package br.com.poolcontrol.sales.service;
+
 import br.com.poolcontrol.sales.entity.Sale;
 import br.com.poolcontrol.sales.entity.SaleCost;
 import br.com.poolcontrol.sales.entity.SaleCostType;
@@ -9,8 +10,6 @@ import br.com.poolcontrol.sales.repository.SaleCostRepository;
 import br.com.poolcontrol.sales.repository.SaleItemRepository;
 import br.com.poolcontrol.sales.repository.SalePaymentRepository;
 import br.com.poolcontrol.sales.repository.SaleRepository;
-
-
 
 import br.com.poolcontrol.catalog.entity.Product;
 import br.com.poolcontrol.catalog.repository.ProductRepository;
@@ -67,8 +66,7 @@ public class SaleService {
                 sale,
                 itemRepository.findAllByCompanyIdAndSaleId(companyId, saleId),
                 costRepository.findAllByCompanyIdAndSaleId(companyId, saleId),
-                paymentRepository.findAllByCompanyIdAndSaleId(companyId, saleId)
-        );
+                paymentRepository.findAllByCompanyIdAndSaleId(companyId, saleId));
     }
 
     @Transactional
@@ -105,7 +103,8 @@ public class SaleService {
 
             if (itemRequest.productId() != null) {
                 product = productRepository.findByIdAndCompanyId(itemRequest.productId(), companyId)
-                        .orElseThrow(() -> new NotFoundException("Produto nÃ£o encontrado: " + itemRequest.productId()));
+                        .orElseThrow(
+                                () -> new NotFoundException("Produto nÃ£o encontrado: " + itemRequest.productId()));
                 unitCost = product.getCostPrice();
             }
 
@@ -117,7 +116,8 @@ public class SaleService {
             item.setQuantity(itemRequest.quantity());
             item.setUnitPrice(itemRequest.unitPrice());
             item.setUnitCost(unitCost);
-            item.setTotalPrice(itemRequest.unitPrice().multiply(itemRequest.quantity()).setScale(2, RoundingMode.HALF_UP));
+            item.setTotalPrice(
+                    itemRequest.unitPrice().multiply(itemRequest.quantity()).setScale(2, RoundingMode.HALF_UP));
             item.setTotalCost(unitCost.multiply(itemRequest.quantity()).setScale(2, RoundingMode.HALF_UP));
 
             savedItems.add(itemRepository.save(item));
@@ -159,7 +159,8 @@ public class SaleService {
             commissionCost.setCompanyId(companyId);
             commissionCost.setSaleId(sale.getId());
             commissionCost.setType(SaleCostType.COMMISSION);
-            commissionCost.setDescription("ComissÃ£o do vendedor (" + commissionRate.stripTrailingZeros().toPlainString() + "%)");
+            commissionCost.setDescription(
+                    "ComissÃ£o do vendedor (" + commissionRate.stripTrailingZeros().toPlainString() + "%)");
             commissionCost.setAmount(commissionAmount);
             savedCosts.add(costRepository.save(commissionCost));
             additionalCost = additionalCost.add(commissionAmount);
@@ -217,7 +218,8 @@ public class SaleService {
     @Transactional
     public SaleResponse complete(Long saleId) {
         var companyId = currentUser.companyId();
-        var sale = saleRepository.findLocked(saleId, companyId).orElseThrow(() -> new NotFoundException("Venda nÃ£o encontrada"));
+        var sale = saleRepository.findLocked(saleId, companyId)
+                .orElseThrow(() -> new NotFoundException("Venda nÃ£o encontrada"));
         var response = get(saleId);
 
         if (sale.getStatus() == SaleStatus.COMPLETED) {
@@ -244,8 +246,7 @@ public class SaleService {
                 .map(payment -> new SaleCompletedEvent.Payment(
                         payment.getAmount(),
                         payment.getDueDate(),
-                        payment.getPaymentMethod()
-                ))
+                        payment.getPaymentMethod()))
                 .toList();
 
         eventPublisher.publishEvent(new SaleCompletedEvent(
@@ -258,16 +259,18 @@ public class SaleService {
                 commissionRate,
                 commissionAmount,
                 eventItems,
-                eventPayments
-        ));
+                eventPayments));
 
         return get(saleId);
     }
+
     @Transactional
     public SaleResponse register(SaleCreateRequest request, boolean paid) {
         var created = create(request);
         var response = complete(created.sale().getId());
-        if (paid) financialService.receivables().stream().filter(r -> response.sale().getId().equals(r.getSourceId())).forEach(r -> financialService.payReceivable(r.getId()));
+        if (paid)
+            financialService.receivables().stream().filter(r -> response.sale().getId().equals(r.getSourceId()))
+                    .forEach(r -> financialService.payReceivable(r.getId()));
         return response;
     }
 }

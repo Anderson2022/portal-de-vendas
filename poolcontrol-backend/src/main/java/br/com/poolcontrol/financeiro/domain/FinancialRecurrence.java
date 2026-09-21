@@ -11,7 +11,7 @@ import java.util.UUID;
 public class FinancialRecurrence extends BaseEntity {
 @Column(nullable=false,length=20) private String tipo;
 @Column(nullable=false,length=255) private String descricao;
-@Column(name="pessoa_id") private UUID pessoaId;
+@Column(name="pessoa_id") private Long pessoaId;
 @Column(name="categoria_financeira_id") private UUID categoriaFinanceiraId;
 @Column(name="plano_conta_id") private UUID planoContaId;
 @Column(name="centro_custo_id") private UUID centroCustoId;

@@ -11,7 +11,7 @@ import java.util.UUID;
 @Getter @Setter @Entity @Table(name="auditoria_financeira")
 public class AuditLog extends BaseEntity {
 
-  @Column(name="usuario_id") private UUID usuarioId;
+  @Column(name="usuario_id") private Long usuarioId;
   @Column(nullable=false,length=80) private String entidade;
   @Column(name="entidade_id",nullable=false) private UUID entidadeId;
   @Column(nullable=false,length=30) private String acao;

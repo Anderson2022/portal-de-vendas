@@ -1,20 +1,14 @@
 package br.com.poolcontrol.marcas.entity;
+
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(
-        name = "marcas",
-        schema = "public",
-        uniqueConstraints = {
-                @UniqueConstraint(
-                        name = "uk_marcas_empresa_codigo",
-                        columnNames = {"empresa_id", "codigo"}
-                )
-        }
-)
+@Table(name = "marcas", schema = "public", uniqueConstraints = {
+        @UniqueConstraint(name = "uk_marcas_empresa_codigo", columnNames = { "empresa_id", "codigo" })
+})
 @Getter
 @Setter
 @NoArgsConstructor

@@ -1,7 +1,5 @@
 package br.com.poolcontrol.pool.entity;
 
-
-
 import br.com.poolcontrol.shared.domain.TenantEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

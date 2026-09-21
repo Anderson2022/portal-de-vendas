@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 public record TituloFinanceiroRequest(
- @NotNull UUID empresaId, UUID pessoaId, UUID origemId, UUID categoriaFinanceiraId, UUID planoContaId, UUID centroCustoId,
+ Long empresaId, Long pessoaId, Long origemId, UUID categoriaFinanceiraId, UUID planoContaId, UUID centroCustoId,
  @Size(max=80) String numeroDocumento, @NotBlank @Size(max=255) String descricao,
  @NotNull LocalDate dataEmissao, @NotNull LocalDate dataCompetencia, @NotNull LocalDate dataVencimento,
  @NotNull @DecimalMin(value="0.01") BigDecimal valorOriginal,

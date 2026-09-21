@@ -1,7 +1,62 @@
 "use client";
-import {useEffect,useState} from "react";
-import {MapPin} from "lucide-react";
-import {listStockBalances,type StockStructureOption} from "@/lib/estoque/stock-structure";
-import {ProductSection} from "../product-section";
+import { useEffect, useState } from "react";
+import { MapPin } from "lucide-react";
+import {
+  listStockBalances,
+  type StockStructureOption,
+} from "@/lib/estoque/stock-structure";
+import { ProductSection } from "../product-section";
 
-export function ProductStockPositions({productId}:{productId?:string}){const [rows,setRows]=useState<StockStructureOption[]>([]);useEffect(()=>{if(productId)void listStockBalances({}).then(all=>setRows(all.filter(row=>String(row.product_id)===productId)));},[productId]);return <ProductSection icon={<MapPin size={17}/>} title="Posições de estoque" description="Distribuição deste produto por unidade, depósito e localização.">{!productId?<p className="text-sm text-ink-400">As posições aparecerão depois que o produto for cadastrado.</p>:<div className="overflow-x-auto rounded-2xl border"><div className="grid min-w-[760px] grid-cols-[1fr_1fr_1.4fr_repeat(4,90px)] bg-white/50 px-4 py-3 text-xs font-bold uppercase"><span>Unidade</span><span>Depósito</span><span>Localização</span><span>Físico</span><span>Reservado</span><span>Bloqueado</span><span>Disponível</span></div>{rows.map(row=><div key={row.id} className="grid min-w-[760px] grid-cols-[1fr_1fr_1.4fr_repeat(4,90px)] border-t px-4 py-3 text-sm"><span>{row.site||"—"}</span><span>{row.warehouse||"—"}</span><span>{row.location||"Sem localização"}</span><span>{row.physical}</span><span>{row.reserved}</span><span>{row.blocked}</span><strong>{row.available}</strong></div>)}{!rows.length&&<p className="p-5 text-sm text-ink-400">Este produto ainda não possui saldo em nenhuma posição.</p>}</div>}</ProductSection>}
+export function ProductStockPositions({ productId }: { productId?: string }) {
+  const [rows, setRows] = useState<StockStructureOption[]>([]);
+  useEffect(() => {
+    if (productId)
+      void listStockBalances({}).then((all) =>
+        setRows(all.filter((row) => String(row.product_id) === productId)),
+      );
+  }, [productId]);
+  return (
+    <ProductSection
+      icon={<MapPin size={17} />}
+      title="Posições de estoque"
+      description="Distribuição deste produto por unidade, depósito e localização."
+    >
+      {!productId ? (
+        <p className="text-sm text-ink-400">
+          As posições aparecerão depois que o produto for cadastrado.
+        </p>
+      ) : (
+        <div className="overflow-x-auto rounded-2xl border">
+          <div className="grid min-w-[760px] grid-cols-[1fr_1fr_1.4fr_repeat(4,90px)] bg-white/50 px-4 py-3 text-xs font-bold uppercase">
+            <span>Unidade</span>
+            <span>Depósito</span>
+            <span>Localização</span>
+            <span>Físico</span>
+            <span>Reservado</span>
+            <span>Bloqueado</span>
+            <span>Disponível</span>
+          </div>
+          {rows.map((row) => (
+            <div
+              key={row.id}
+              className="grid min-w-[760px] grid-cols-[1fr_1fr_1.4fr_repeat(4,90px)] border-t px-4 py-3 text-sm"
+            >
+              <span>{row.site || "—"}</span>
+              <span>{row.warehouse || "—"}</span>
+              <span>{row.location || "Sem localização"}</span>
+              <span>{row.physical}</span>
+              <span>{row.reserved}</span>
+              <span>{row.blocked}</span>
+              <strong>{row.available}</strong>
+            </div>
+          ))}
+          {!rows.length && (
+            <p className="p-5 text-sm text-ink-400">
+              Este produto ainda não possui saldo em nenhuma posição.
+            </p>
+          )}
+        </div>
+      )}
+    </ProductSection>
+  );
+}

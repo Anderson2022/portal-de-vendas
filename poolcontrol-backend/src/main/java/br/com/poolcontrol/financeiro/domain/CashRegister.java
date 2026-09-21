@@ -17,8 +17,8 @@ public class CashRegister extends BaseEntity {
   @Column(name="saldo_fechamento",precision=19,scale=4) private BigDecimal saldoFechamento;
   @Column(name="aberto_em") private OffsetDateTime abertoEm;
   @Column(name="fechado_em") private OffsetDateTime fechadoEm;
-  @Column(name="aberto_por") private UUID abertoPor;
-  @Column(name="fechado_por") private UUID fechadoPor;
+  @Column(name="aberto_por") private Long abertoPor;
+  @Column(name="fechado_por") private Long fechadoPor;
   @Column(nullable=false) private boolean aberto=false;
 
 }

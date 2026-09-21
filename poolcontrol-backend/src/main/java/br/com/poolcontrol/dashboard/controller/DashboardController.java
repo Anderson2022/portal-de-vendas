@@ -1,8 +1,7 @@
 package br.com.poolcontrol.dashboard.controller;
+
 import br.com.poolcontrol.dashboard.dto.DashboardSummary;
 import br.com.poolcontrol.dashboard.entity.SalespersonRanking;
-
-
 
 import br.com.poolcontrol.dashboard.service.DashboardService;
 import lombok.RequiredArgsConstructor;

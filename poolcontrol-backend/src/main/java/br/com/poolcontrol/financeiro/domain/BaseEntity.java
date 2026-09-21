@@ -8,7 +8,7 @@ import java.util.UUID;
 public abstract class BaseEntity {
   @Id @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
-  @Column(name="empresa_id", nullable=false) private UUID empresaId;
+  @Column(name="empresa_id", nullable=false) private Long empresaId;
   @Column(name="criado_em", nullable=false, updatable=false) private OffsetDateTime criadoEm;
   @Column(name="atualizado_em", nullable=false) private OffsetDateTime atualizadoEm;
   @Column(name="excluido_em") private OffsetDateTime excluidoEm;

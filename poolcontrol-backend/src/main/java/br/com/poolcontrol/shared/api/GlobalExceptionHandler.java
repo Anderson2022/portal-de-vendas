@@ -1,7 +1,5 @@
 package br.com.poolcontrol.shared.api;
 
-
-
 import br.com.poolcontrol.shared.exception.BusinessException;
 import br.com.poolcontrol.shared.exception.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -54,15 +52,13 @@ public class GlobalExceptionHandler {
             HttpStatus status,
             String message,
             HttpServletRequest request,
-            Map<String, String> fields
-    ) {
+            Map<String, String> fields) {
         return ResponseEntity.status(status).body(new ApiError(
                 OffsetDateTime.now(ZoneOffset.UTC),
                 status.value(),
                 status.getReasonPhrase(),
                 message,
                 request.getRequestURI(),
-                fields
-        ));
+                fields));
     }
 }

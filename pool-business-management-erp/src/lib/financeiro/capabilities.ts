@@ -1,0 +1,23 @@
+import type { FinancialCapability } from "./types";
+export const pendingCapabilities: FinancialCapability[] = [
+    { slug: "bancos", label: "Bancos", description: "Contas bancárias, saldos e última conciliação.", fields: ["Banco", "Agência / conta", "Titular", "Saldo conciliado", "Última atualização"] },
+    { slug: "contas", label: "Contas financeiras", description: "Bancos, caixas, carteiras digitais e aplicações.", fields: ["Nome", "Tipo", "Saldo inicial", "Data inicial", "Situação"] },
+    { slug: "conciliacao", label: "Conciliação bancária", description: "Vinculação entre extrato bancário e movimentações do ERP.", fields: ["Extrato bancário", "Movimentações do ERP", "Correspondências", "Histórico"] },
+    { slug: "caixa", label: "Caixa", description: "Abertura, fechamento, suprimentos e sangrias por operador.", fields: ["Caixa", "Operador", "Situação", "Saldo calculado", "Aberto desde"] },
+    { slug: "transferencias", label: "Transferências", description: "Transferências entre contas com entradas e saídas vinculadas.", fields: ["Conta de origem", "Conta de destino", "Data", "Valor", "Tarifa"] },
+    { slug: "pix", label: "PIX", description: "Cobranças, confirmações, devoluções e identificação bancária.", fields: ["Status", "TXID", "EndToEndId", "Valor", "Conta financeira"] },
+    { slug: "boletos", label: "Boletos", description: "Emissão, registro, liquidação e segunda via de boletos.", fields: ["Cliente", "Nosso número", "Vencimento", "Valor", "Status"] },
+    { slug: "cartoes", label: "Cartões e recebíveis", description: "Transações, taxas, previsões de liquidação e antecipações.", fields: ["Adquirente", "NSU", "Bandeira", "Valor bruto", "Taxas", "Valor líquido", "Liquidação"] },
+    { slug: "adquirentes", label: "Adquirentes", description: "Credenciadoras, prazos, taxas por bandeira e vigência.", fields: ["Nome", "CNPJ", "Prazo débito", "Prazo crédito", "MDR", "Vigência"] },
+    { slug: "aprovacoes", label: "Aprovações", description: "Solicitações, níveis de aprovação e histórico de decisões.", fields: ["Solicitante", "Documento", "Valor", "Nível", "Status", "Justificativa"] },
+    { slug: "cobranca", label: "Cobrança", description: "Régua de cobrança e histórico de contatos.", fields: ["Etapa", "Dias do vencimento", "Canal", "Situação", "Último envio"] },
+    { slug: "recorrencias", label: "Recorrências", description: "Geração recorrente de contas a pagar e receber.", fields: ["Tipo", "Descrição", "Valor", "Frequência", "Próxima geração", "Ativo"] },
+    { slug: "renegociacoes", label: "Renegociações", description: "Novos acordos preservando os títulos originais e seu histórico.", fields: ["Títulos originais", "Saldo", "Juros / multa", "Desconto", "Parcelas", "Primeiro vencimento"] },
+    { slug: "orcamento", label: "Orçamento financeiro", description: "Comparação mensal do orçado, realizado e desvio.", fields: ["Categoria", "Centro de custo", "Conta do plano", "Orçado", "Realizado", "Desvio"] },
+    { slug: "dre", label: "DRE gerencial", description: "Receitas, custos, despesas e resultado por competência.", fields: ["Receita bruta", "Deduções", "Custos", "Despesas operacionais", "Resultado financeiro", "Resultado líquido"] },
+    { slug: "categorias", label: "Categorias financeiras", description: "Classificação hierárquica de receitas e despesas.", fields: ["Código", "Nome", "Categoria superior", "Tipo", "Situação"] },
+    { slug: "plano-contas", label: "Plano de contas", description: "Estrutura de contas analíticas e sintéticas.", fields: ["Código", "Nome", "Natureza", "Tipo", "Analítica / sintética", "Permite lançamento"] },
+    { slug: "centros-custos", label: "Centros de custo", description: "Organização por departamento, filial, projeto e responsável.", fields: ["Código", "Nome", "Tipo", "Responsável", "Vigência"] },
+    { slug: "formas-pagamento", label: "Formas de pagamento", description: "Meios de pagamento, geração de recebíveis e prazos de compensação.", fields: ["Código", "Nome", "Tipo", "Compensação", "Ativo"] },
+    { slug: "auditoria", label: "Auditoria financeira", description: "Histórico de operações, usuário, justificativa e alterações.", fields: ["Data / hora", "Usuário", "Operação", "Entidade", "Antes / depois", "Justificativa"] },
+];

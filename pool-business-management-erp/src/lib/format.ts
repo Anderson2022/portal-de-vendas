@@ -1,5 +1,5 @@
 export const n = (v: unknown): number => Number(v ?? 0);
-export const documentCode = (id: string | number) => String(id).includes("-") ? String(id).slice(0,8).toUpperCase() : String(id);
+export const documentCode = (id: string | number) => String(id).includes("-") ? String(id).slice(0, 8).toUpperCase() : String(id);
 
 export const brl = (v: number) =>
   v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -90,7 +90,7 @@ export const roleMap: Record<string, { label: string; tone: Tone }> = {
 };
 
 /** Âncoras temporais da operação de demonstração */
-export const TODAY = new Date().toLocaleDateString("en-CA", {timeZone:"America/Cuiaba"});
-export const MONTH = TODAY.slice(0,7);
-export const PREVIOUS_MONTH = new Date(Date.UTC(Number(MONTH.slice(0,4)),Number(MONTH.slice(5,7))-2,1)).toISOString().slice(0,7);
-export const PERIOD_LABEL = new Date(MONTH+"-15T12:00:00Z").toLocaleDateString("pt-BR",{month:"long",year:"numeric"});
+export const TODAY = new Date().toLocaleDateString("en-CA", { timeZone: "America/Cuiaba" });
+export const MONTH = TODAY.slice(0, 7);
+export const PREVIOUS_MONTH = new Date(Date.UTC(Number(MONTH.slice(0, 4)), Number(MONTH.slice(5, 7)) - 2, 1)).toISOString().slice(0, 7);
+export const PERIOD_LABEL = new Date(MONTH + "-15T12:00:00Z").toLocaleDateString("pt-BR", { month: "long", year: "numeric" });

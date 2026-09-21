@@ -8,7 +8,9 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test:commercial": "node --import tsx --test tests/commercial.test.ts",
-    "test:commercial:browser": "node scripts/check-commercial.mjs"
+    "test:commercial:browser": "node scripts/check-commercial.mjs",
+    "test:financial": "node --import tsx --test tests/financial.test.ts",
+    "test:financial:browser": "node tests/financial-browser.mjs"
   },
   "dependencies": {
     "dotenv": "17.3.1",
