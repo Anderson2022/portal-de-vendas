@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.*;
 import java.util.UUID;
 
-@Getter @Setter @Entity @Table(name="auditoria_financeira")
+@Getter @Setter @Entity(name="FinancialAuditLog") @Table(name="auditoria_financeira")
 public class AuditLog extends BaseEntity {
 
   @Column(name="usuario_id") private Long usuarioId;
