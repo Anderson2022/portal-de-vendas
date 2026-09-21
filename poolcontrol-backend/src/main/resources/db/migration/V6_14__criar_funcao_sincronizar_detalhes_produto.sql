@@ -1,75 +1,5 @@
-CREATE TABLE produto_identificacao (
-    id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL REFERENCES empresas(id), produto_id BIGINT NOT NULL UNIQUE REFERENCES produtos(id) ON DELETE CASCADE,
-    codigo_interno VARCHAR(60), referencia_fabricante VARCHAR(120)
-);
-
-CREATE TABLE produto_precos (
-    id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL REFERENCES empresas(id), produto_id BIGINT NOT NULL UNIQUE REFERENCES produtos(id) ON DELETE CASCADE,
-    preco_minimo NUMERIC(14,2), preco_promocional NUMERIC(14,2), promocao_inicio DATE, promocao_fim DATE,
-    margem_minima NUMERIC(7,2), desconto_maximo NUMERIC(7,2), comissao NUMERIC(7,2), quantidade_minima_venda NUMERIC(14,3)
-);
-
-CREATE TABLE produto_estoque_configuracao (
-    id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL REFERENCES empresas(id), produto_id BIGINT NOT NULL UNIQUE REFERENCES produtos(id) ON DELETE CASCADE,
-    estoque_maximo NUMERIC(14,3), ponto_reposicao NUMERIC(14,3), localizacao VARCHAR(160),
-    controla_lote BOOLEAN NOT NULL DEFAULT FALSE, controla_validade BOOLEAN NOT NULL DEFAULT FALSE,
-    controla_serie BOOLEAN NOT NULL DEFAULT FALSE, controla_estoque BOOLEAN NOT NULL DEFAULT TRUE,
-    exibir_venda BOOLEAN NOT NULL DEFAULT TRUE, permite_venda_fracionada BOOLEAN NOT NULL DEFAULT FALSE,
-    exige_instalacao BOOLEAN NOT NULL DEFAULT FALSE
-);
-
-CREATE TABLE produto_fiscal (
-    id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL REFERENCES empresas(id), produto_id BIGINT NOT NULL UNIQUE REFERENCES produtos(id) ON DELETE CASCADE,
-    ncm VARCHAR(8), cest VARCHAR(7), origem_mercadoria VARCHAR(120), cfop_venda VARCHAR(4), codigo_icms VARCHAR(3),
-    codigo_pis VARCHAR(2), codigo_cofins VARCHAR(2), codigo_ipi VARCHAR(2), gtin_tributavel VARCHAR(14),
-    fator_conversao_tributavel NUMERIC(18,6), codigo_beneficio_fiscal VARCHAR(30)
-);
-
-CREATE TABLE produto_tecnico (
-    id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL REFERENCES empresas(id), produto_id BIGINT NOT NULL UNIQUE REFERENCES produtos(id) ON DELETE CASCADE,
-    compatibilidade VARCHAR(500), assistencia_tecnica VARCHAR(500), garantia_geral_meses INTEGER, link_manual VARCHAR(1000)
-);
-
-CREATE TABLE produto_logistica (
-    id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL REFERENCES empresas(id), produto_id BIGINT NOT NULL UNIQUE REFERENCES produtos(id) ON DELETE CASCADE,
-    codigo_fornecedor VARCHAR(120), unidades_por_embalagem NUMERIC(14,3), prazo_reposicao_dias INTEGER,
-    pedido_minimo_compra NUMERIC(14,3), peso_liquido NUMERIC(14,3), peso_bruto NUMERIC(14,3),
-    comprimento_embalagem NUMERIC(14,2), largura_embalagem NUMERIC(14,2), altura_embalagem NUMERIC(14,2), condicoes_armazenamento VARCHAR(1000)
-);
-
-CREATE TABLE produto_midia (
-    id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL REFERENCES empresas(id), produto_id BIGINT NOT NULL UNIQUE REFERENCES produtos(id) ON DELETE CASCADE,
-    imagem TEXT, observacoes_internas TEXT, orientacoes_venda_instalacao TEXT
-);
-
-CREATE TABLE tensoes_produto (
-    id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL REFERENCES empresas(id), nome VARCHAR(60) NOT NULL, codigo VARCHAR(20) NOT NULL,
-    ativo BOOLEAN NOT NULL DEFAULT TRUE, UNIQUE (empresa_id, codigo)
-);
-
-CREATE TABLE produto_especificacoes (
-    id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL REFERENCES empresas(id), produto_id BIGINT NOT NULL UNIQUE REFERENCES produtos(id) ON DELETE CASCADE,
-    tensao_id BIGINT REFERENCES tensoes_produto(id), potencia VARCHAR(80), garantia_meses INTEGER,
-    modelo_piscina VARCHAR(160), comprimento NUMERIC(14,3), largura NUMERIC(14,3), profundidade NUMERIC(14,3), volume NUMERIC(14,3), cor VARCHAR(80),
-    modelo_filtro VARCHAR(160), vazao VARCHAR(80), tamanho_embalagem VARCHAR(80), concentracao VARCHAR(80), principio_ativo VARCHAR(200), modo_aplicacao VARCHAR(500)
-);
-
-CREATE TABLE produto_variacoes_preco (
-    id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL REFERENCES empresas(id), produto_id BIGINT NOT NULL REFERENCES produtos(id) ON DELETE CASCADE,
-    descricao VARCHAR(160) NOT NULL, quantidade_minima NUMERIC(14,3) NOT NULL, preco NUMERIC(14,2) NOT NULL
-);
-
-CREATE TABLE produto_componentes_kit (
-    id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL REFERENCES empresas(id), produto_id BIGINT NOT NULL REFERENCES produtos(id) ON DELETE CASCADE,
-    componente_produto_id BIGINT REFERENCES produtos(id), descricao VARCHAR(200) NOT NULL, quantidade NUMERIC(14,3) NOT NULL, unidade VARCHAR(20) NOT NULL
-);
-
-CREATE INDEX idx_produto_variacoes_empresa_produto ON produto_variacoes_preco (empresa_id, produto_id);
-CREATE INDEX idx_produto_componentes_empresa_produto ON produto_componentes_kit (empresa_id, produto_id);
-
-INSERT INTO tensoes_produto (empresa_id, nome, codigo)
-SELECT id, t.nome, t.codigo FROM empresas CROSS JOIN (VALUES ('127 V','127'),('220 V','220'),('Bivolt','BIVOLT')) t(nome,codigo)
-ON CONFLICT DO NOTHING;
+-- Migration V6_14__criar_funcao_sincronizar_detalhes_produto.sql
+-- Parte da V6: normalizacao dos detalhes de produto.
 
 CREATE OR REPLACE FUNCTION sincronizar_detalhes_produto() RETURNS TRIGGER AS $$
 DECLARE d JSONB := COALESCE(NULLIF(NEW.details_json, ''), '{}')::JSONB;
@@ -115,8 +45,3 @@ BEGIN
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-
-CREATE TRIGGER trg_sincronizar_detalhes_produto AFTER INSERT OR UPDATE OF details_json ON produtos
-FOR EACH ROW EXECUTE FUNCTION sincronizar_detalhes_produto();
-
-UPDATE produtos SET details_json=details_json;

@@ -336,3 +336,447 @@ Faça:
 "Vou localizar a implementação relacionada, alterar somente o necessário, componentizar durante a alteração e validar o resultado."
 
 O objetivo é produzir código, não relatórios.
+
+---
+
+# 18. REGRA OBRIGATÓRIA PARA BANCO DE DADOS
+
+O banco de dados também deve ser modular.
+
+NÃO criar migrations gigantes contendo dezenas de tabelas diferentes.
+
+Cada tabela nova deve possuir sua própria migration sempre que tecnicamente possível.
+
+EVITAR:
+
+V020__produtos_completo.sql
+
+contendo:
+
+- produto_identificacao
+- produto_precos
+- produto_fiscal
+- produto_logistica
+- produto_midia
+- produto_especificacoes
+- produto_variacoes_preco
+- produto_componentes_kit
+- triggers
+- functions
+- seeds
+- backfill
+
+PREFERIR:
+
+db/migration/
+
+  V020__create_produto_identificacao.sql
+  V021__create_produto_precos.sql
+  V022__create_produto_estoque_configuracao.sql
+  V023__create_produto_fiscal.sql
+  V024__create_produto_tecnico.sql
+  V025__create_produto_logistica.sql
+  V026__create_produto_midia.sql
+  V027__create_tensoes_produto.sql
+  V028__create_produto_especificacoes.sql
+  V029__create_produto_variacoes_preco.sql
+  V030__create_produto_componentes_kit.sql
+  V031__seed_tensoes_produto.sql
+  V032__create_sincronizar_detalhes_produto_function.sql
+  V033__create_sincronizar_detalhes_produto_trigger.sql
+  V034__backfill_detalhes_produto.sql
+
+Uma migration deve representar UMA mudança de banco claramente identificável.
+
+Exceção:
+
+Índices e constraints diretamente ligados à criação da própria tabela
+podem ficar no mesmo arquivo da tabela.
+
+Exemplo permitido:
+
+CREATE TABLE contas_pagar (...);
+
+CREATE INDEX idx_contas_pagar_empresa
+ON contas_pagar (empresa_id);
+
+CREATE INDEX idx_contas_pagar_vencimento
+ON contas_pagar (empresa_id, data_vencimento);
+
+Não colocar tabelas não relacionadas no mesmo arquivo.
+
+---
+
+# 19. UM ARQUIVO POR ENTIDADE DE BANCO
+
+Para entidades novas, separar arquivos por entidade.
+
+Exemplo Java:
+
+financeiro/
+  contaspagar/
+    ContaPagar.java
+    ContaPagarRepository.java
+    ContaPagarService.java
+    ContaPagarController.java
+    ContaPagarMapper.java
+    dto/
+      CriarContaPagarRequest.java
+      AtualizarContaPagarRequest.java
+      ContaPagarResponse.java
+
+NÃO criar:
+
+FinanceiroEntities.java
+
+contendo:
+
+ContaPagar
+ContaReceber
+Pagamento
+Recebimento
+MovimentacaoFinanceira
+
+Cada entidade deve possuir seu próprio arquivo.
+
+O mesmo vale para:
+
+- enums;
+- DTOs;
+- repositories;
+- services;
+- controllers;
+- mappers;
+- validators.
+
+---
+
+# 20. NÃO AGRUPAR CADASTROS DIFERENTES
+
+Um cadastro funcional deve possuir seu próprio módulo/pasta.
+
+Exemplo:
+
+components/
+  financeiro/
+    contas-pagar/
+    contas-receber/
+    categorias-financeiras/
+    centros-custo/
+    plano-contas/
+    contas-financeiras/
+    formas-pagamento/
+
+NÃO criar:
+
+components/financeiro/financial-registers.tsx
+
+contendo todos os cadastros financeiros.
+
+Cada cadastro deve ser independente.
+
+---
+
+# 21. COMPONENTIZAÇÃO DURANTE A IMPLEMENTAÇÃO
+
+É PROIBIDO criar primeiro um componente gigante com intenção de
+"componentizar depois".
+
+A componentização deve acontecer enquanto a funcionalidade está sendo criada.
+
+Antes de adicionar uma nova seção a um arquivo existente, verificar:
+
+1. essa seção possui responsabilidade própria?
+2. possui formulário próprio?
+3. possui handlers próprios?
+4. possui regras próprias?
+5. pode ser reutilizada?
+6. dificulta a leitura do componente principal?
+
+Se qualquer resposta for SIM, criar componente separado.
+
+---
+
+# 22. PÁGINAS DEVEM SER FINAS
+
+Arquivos de página devem ser pequenos.
+
+Exemplo:
+
+app/financeiro/contas-pagar/page.tsx
+
+deve preferencialmente apenas:
+
+- validar contexto necessário;
+- carregar o componente principal;
+- definir metadata quando aplicável.
+
+Exemplo:
+
+export default function ContasPagarPage() {
+  return <AccountsPayableScreen />;
+}
+
+NÃO colocar na page:
+
+- formulário completo;
+- tabela completa;
+- dezenas de useState;
+- chamadas de API espalhadas;
+- dialogs grandes;
+- regras de negócio;
+- centenas de linhas JSX.
+
+---
+
+# 23. ESTRUTURA OBRIGATÓRIA PARA TELAS GRANDES
+
+Para telas complexas, seguir este padrão:
+
+components/
+  financeiro/
+    contas-pagar/
+      accounts-payable-screen.tsx
+      accounts-payable-header.tsx
+      accounts-payable-filters.tsx
+      accounts-payable-table.tsx
+      accounts-payable-columns.tsx
+      accounts-payable-summary.tsx
+      accounts-payable-actions.tsx
+
+      form/
+        payable-form.tsx
+        payable-main-section.tsx
+        payable-classification-section.tsx
+        payable-payment-section.tsx
+        payable-installments-section.tsx
+        payable-recurrence-section.tsx
+        payable-attachments-section.tsx
+        payable-notes-section.tsx
+        payable-form-actions.tsx
+
+      dialogs/
+        create-payable-dialog.tsx
+        edit-payable-dialog.tsx
+        pay-payable-dialog.tsx
+        cancel-payable-dialog.tsx
+        reverse-payment-dialog.tsx
+
+      hooks/
+        use-accounts-payable.ts
+        use-payable-form.ts
+        use-payable-filters.ts
+
+      services/
+        create-payable.ts
+        update-payable.ts
+        get-payables.ts
+        get-payable.ts
+        cancel-payable.ts
+        pay-payable.ts
+
+      schemas/
+        payable-form-schema.ts
+
+      types/
+        payable.ts
+        payable-filters.ts
+
+Não é obrigatório criar arquivos vazios.
+
+Criar somente os arquivos necessários para a funcionalidade implementada.
+
+---
+
+# 24. MODAIS GRANDES NÃO PODEM SER MONOLÍTICOS
+
+Um modal complexo deve possuir um componente de estrutura e componentes internos.
+
+Exemplo correto:
+
+create-payable-dialog.tsx
+
+  -> payable-form.tsx
+
+      -> payable-main-section.tsx
+      -> payable-classification-section.tsx
+      -> payable-payment-section.tsx
+      -> payable-installments-section.tsx
+      -> payable-attachments-section.tsx
+
+O arquivo do modal NÃO deve conter todo o formulário diretamente.
+
+O modal é responsável principalmente por:
+
+- abrir/fechar;
+- título;
+- descrição;
+- container;
+- ações gerais.
+
+As seções do formulário devem ficar separadas.
+
+---
+
+# 25. LIMITES DE TAMANHO
+
+Não existe limite absoluto quando houver justificativa técnica,
+mas use estes valores como sinal obrigatório de revisão:
+
+TSX:
+
+- até 150 linhas: normal;
+- 150 a 250 linhas: verificar possibilidade de divisão;
+- acima de 250 linhas: deve justificar ou componentizar;
+- acima de 400 linhas: NÃO permitido sem necessidade excepcional.
+
+Hooks:
+
+- preferencialmente até 150 linhas.
+
+Services/actions:
+
+- preferencialmente até 150 linhas.
+
+DTOs/types:
+
+- separar quando começarem a representar domínios diferentes.
+
+SQL:
+
+- uma tabela por migration;
+- funções/triggers complexos em migrations próprias.
+
+Não dividir artificialmente código coeso apenas para atingir números.
+
+O objetivo é responsabilidade clara.
+
+---
+
+# 26. INDENTAÇÃO E FORMATAÇÃO SÃO OBRIGATÓRIAS
+
+Todo código criado ou alterado deve sair formatado.
+
+Não entregar código sem indentação.
+
+Não entregar JSX comprimido.
+
+Não entregar SQL em linhas gigantes.
+
+Não entregar objetos TypeScript difíceis de ler.
+
+Frontend:
+
+usar a configuração Prettier existente no projeto.
+
+Depois de alterar arquivos frontend, executar quando disponível:
+
+npm run format
+
+ou:
+
+npx prettier --write <arquivos-alterados>
+
+Depois executar lint/typecheck relevante.
+
+Java:
+
+usar o formatter já configurado no projeto.
+
+Não introduzir um formatter novo sem necessidade.
+
+SQL:
+
+usar indentação consistente.
+
+Exemplo correto:
+
+CREATE TABLE contas_pagar (
+    id BIGSERIAL PRIMARY KEY,
+    empresa_id BIGINT NOT NULL REFERENCES empresas(id),
+    fornecedor_id BIGINT REFERENCES fornecedores(id),
+    descricao VARCHAR(255) NOT NULL,
+    valor_original NUMERIC(18, 2) NOT NULL,
+    data_vencimento DATE NOT NULL
+);
+
+CREATE INDEX idx_contas_pagar_empresa_vencimento
+    ON contas_pagar (
+        empresa_id,
+        data_vencimento
+    );
+
+Evitar:
+
+CREATE TABLE contas_pagar (id BIGSERIAL PRIMARY KEY, empresa_id BIGINT NOT NULL, fornecedor_id BIGINT, descricao VARCHAR(255), valor NUMERIC(18,2));
+
+
+## 27. Formatação obrigatória
+
+Todo código alterado deve ser entregue formatado e indentado.
+
+Antes de finalizar:
+
+- executar o formatter existente;
+- corrigir imports;
+- corrigir lint simples;
+- validar TypeScript quando aplicável.
+
+Não entregar código comprimido ou sem indentação.
+
+---
+
+## 28. Não criar arquivos gigantes
+
+Não juntar várias responsabilidades em um único arquivo.
+
+Evitar:
+
+actions.ts
+services.ts
+types.ts
+database.sql
+
+quando esses arquivos começarem a concentrar funcionalidades diferentes.
+
+Preferir arquivos separados por responsabilidade.
+
+Exemplo:
+
+create-payable.ts
+update-payable.ts
+cancel-payable.ts
+pay-payable.ts
+
+---
+
+## 29. Banco de dados
+
+Para novas migrations:
+
+- uma tabela por arquivo sempre que possível;
+- índices da própria tabela podem ficar junto;
+- functions ficam em arquivos próprios;
+- triggers ficam em arquivos próprios;
+- seeds ficam em arquivos próprios;
+- backfills ficam em arquivos próprios.
+
+Não criar uma migration gigante com várias tabelas diferentes.
+
+Nunca editar migration já aplicada em produção.
+Criar uma nova migration para correções.
+
+---
+
+## 30. Regra final
+
+Uma tarefa só está concluída quando o código estiver:
+
+- funcionando;
+- organizado;
+- componentizado;
+- indentado;
+- formatado;
+- separado por domínio.
+
+Não concentrar código para economizar arquivos.
