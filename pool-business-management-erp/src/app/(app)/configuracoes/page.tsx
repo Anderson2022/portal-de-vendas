@@ -14,11 +14,8 @@ export default async function ConfiguracoesPage() {
   return (
     <div className="mx-auto max-w-[1460px]">
       <PageIntro
-        crumbs={[
-          { label: "Início", href: "/inicio" },
-          { label: "Configurações" },
-        ]}
-        title="Configurações"
+        crumbs={[{ label: "Início", href: "/inicio" }, { label: "Segurança" }]}
+        title="Segurança"
         subtitle="Empresa, usuários e acesso à operação."
       />
       <div className="mt-6 grid gap-5 md:grid-cols-2">

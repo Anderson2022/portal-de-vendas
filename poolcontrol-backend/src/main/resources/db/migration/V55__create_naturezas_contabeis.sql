@@ -1,0 +1,6 @@
+CREATE TABLE naturezas_contabeis (
+    id BIGSERIAL PRIMARY KEY,
+    codigo VARCHAR(20) NOT NULL UNIQUE,
+    nome VARCHAR(120) NOT NULL,
+    ativo BOOLEAN NOT NULL DEFAULT TRUE
+);

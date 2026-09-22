@@ -172,12 +172,23 @@ export default async function InicioPage() {
     {
       href: "/configuracoes",
       icon: <Settings size={26} strokeWidth={2} />,
-      title: "Configurações",
-      desc: "Usuários, permissões e parâmetros",
+      title: "Segurança",
+      desc: "Usuários, permissões e acessos",
       chip: {
         icon: <ShieldCheck size={13} />,
         text: "Sistema atualizado",
         tone: "slate",
+      },
+    },
+    {
+      href: "/ajustes",
+      icon: <Settings size={26} strokeWidth={2} />,
+      title: "Configurações",
+      desc: "Cadastros e parâmetros dos módulos",
+      chip: {
+        icon: <Settings size={13} />,
+        text: "Financeiro disponível",
+        tone: "blue",
       },
     },
   ];

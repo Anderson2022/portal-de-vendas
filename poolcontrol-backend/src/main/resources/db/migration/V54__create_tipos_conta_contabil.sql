@@ -1,0 +1,6 @@
+CREATE TABLE tipos_conta_contabil (
+    id BIGSERIAL PRIMARY KEY,
+    codigo VARCHAR(30) NOT NULL UNIQUE,
+    nome VARCHAR(120) NOT NULL,
+    ativo BOOLEAN NOT NULL DEFAULT TRUE
+);
