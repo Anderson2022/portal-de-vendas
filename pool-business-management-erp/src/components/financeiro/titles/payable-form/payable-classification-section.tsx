@@ -1,5 +1,6 @@
 import type { PayableFormState } from "./payable-form-types";
-import { FinancialLookupField } from "../../settings/financial-lookup-field";
+import { useDimensionOptions } from "../../dimensoes/use-dimension-options";
+import { PayableDimensionFields } from "./payable-dimension-fields";
 import { currency } from "./payable-form-utils";
 
 type Props = {
@@ -23,6 +24,7 @@ export function PayableClassificationSection({
   update,
   updateAllocation,
 }: Props) {
+  const { options, error } = useDimensionOptions();
   return (
     <section className="space-y-5">
       <header>
@@ -31,37 +33,25 @@ export function PayableClassificationSection({
           Organize o título para relatórios e análise de resultado.
         </p>
       </header>
-      <div className="grid gap-4 md:grid-cols-2">
-        <label className="text-sm font-semibold">
-          Categoria / plano de contas *
-          <input
-            className="input mt-1 w-full"
-            name="financialCategory"
-            placeholder="Selecione ou informe a classificação"
-          />
-        </label>
-        <label className="text-sm font-semibold">
-          Centro de custo *
-          <input
-            className="input mt-1 w-full"
-            name="costCenter"
-            placeholder="Centro de custo principal"
-          />
-        </label>
-        <label className="text-sm font-semibold">
-          Projeto / unidade
-          <input className="input mt-1 w-full" name="project" />
-        </label>
-        <label className="text-sm font-semibold">
-          Natureza financeira
-          <select className="input mt-1 w-full" name="nature">
-            <option>Operacional</option>
-            <option>Investimento</option>
-            <option>Financeira</option>
-            <option>Tributária</option>
-          </select>
-        </label>
-      </div>
+      {error && (
+        <p role="alert" className="text-sm text-red-700">
+          {error}
+        </p>
+      )}
+      {!options && !error && (
+        <p className="text-sm text-slate-500">Carregando classificações…</p>
+      )}
+      {options && <PayableDimensionFields options={options} />}
+      <input
+        type="hidden"
+        name="allocations"
+        value={JSON.stringify(
+          state.allocations.map((item) => ({
+            costCenterId: item.costCenter,
+            percentage: item.percentage,
+          })),
+        )}
+      />
       <div className="rounded-2xl border border-slate-200 p-4">
         <div className="flex items-center justify-between">
           <div>
@@ -93,14 +83,23 @@ export function PayableClassificationSection({
               key={item.id}
               className="grid grid-cols-[1fr_100px_130px_36px] items-center gap-2"
             >
-              <input
+              <select
                 className="input"
-                placeholder="Centro de custo"
+                aria-label="Centro de custo do rateio"
                 value={item.costCenter}
                 onChange={(event) =>
                   updateAllocation(item.id, { costCenter: event.target.value })
                 }
-              />
+              >
+                <option value="">Selecione um centro</option>
+                {options?.centers
+                  .filter((center) => center.active && center.acceptsEntries)
+                  .map((center) => (
+                    <option key={center.id} value={center.id}>
+                      {center.code} — {center.name}
+                    </option>
+                  ))}
+              </select>
               <input
                 className="input"
                 type="number"

@@ -1,0 +1,33 @@
+import type { Product } from "../types/product";
+export const marketProducts: Product[] = [
+  ["coca", "Coca-Cola 2L", 9.9, "Bebidas", 120, "7894900010010"],
+  ["fanta", "Fanta Laranja 2L", 8.9, "Bebidas", 85, "7894900050010"],
+  ["sprite", "Sprite 2L", 8.9, "Bebidas", 64, "7894900090010"],
+  ["leite", "Leite Integral 1L", 4.99, "Alimentos", 98, "7891000245102"],
+  ["pao", "Pão Francês", 0.5, "Alimentos", 500, "0000000001234"],
+  ["arroz", "Arroz 5kg", 24.9, "Alimentos", 48, "7896012200310"],
+  ["feijao", "Feijão 1kg", 7.9, "Alimentos", 76, "7891234560010"],
+  ["acucar", "Açúcar 1kg", 5.49, "Alimentos", 120, "7891000010521"],
+  ["oleo", "Óleo de Soja 900ml", 6.99, "Alimentos", 60, "7891100010320"],
+  ["cafe", "Café 500g", 19.9, "Alimentos", 40, "7891110000101"],
+  ["macarrao", "Macarrão 500g", 4.49, "Alimentos", 110, "7896022201034"],
+  ["molho", "Molho de Tomate 340g", 3.49, "Alimentos", 95, "7896500910010"],
+  ["detergente", "Detergente 500ml", 2.49, "Limpeza", 180, "7891020001292"],
+  ["papel", "Papel Higiênico 4un", 6.9, "Higiene", 95, "7896010002912"],
+  [
+    "agua-sanitaria",
+    "Água Sanitária 1L",
+    3.99,
+    "Limpeza",
+    140,
+    "7891000012319",
+  ],
+].map(([id, name, price, category, stock, barcode]) => ({
+  id: String(id),
+  name: String(name),
+  price: Number(price),
+  category: String(category),
+  stock: Number(stock),
+  barcode: String(barcode),
+  image: `/pdv-assets/product-${id}.webp`,
+}));

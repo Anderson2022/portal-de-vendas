@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content="Acesse seu sistema de gestão PoolControl."
+    />
+    <title>Carregando · PoolControl</title>
+    <link rel="stylesheet" href="/poolcontrol-loading.css" />
+    <script src="/poolcontrol-loading.js" defer></script>
+  </head>
+  <body>
+    <main class="loading-card" aria-labelledby="brand">
+      <div class="brand-icon" aria-hidden="true">P</div>
+      <h1 id="brand">Pool<span>Control</span></h1>
+      <p class="subtitle">Seu estoque, sob controle.</p>
+      <div class="spinner" aria-hidden="true"></div>
+      <div role="status" aria-live="polite">
+        <h2 id="status-title">Carregando seu sistema</h2>
+        <p id="status-description">
+          Estamos preparando seu acesso. Aguarde um instante.
+        </p>
+      </div>
+      <button id="retry" type="button" hidden>Tentar novamente</button>
+      <noscript>
+        <p><a href="/inicio">Clique aqui para acessar o sistema</a></p>
+      </noscript>
+    </main>
+    <footer>PoolControl · Gestão de estoque</footer>
+  </body>
+</html>

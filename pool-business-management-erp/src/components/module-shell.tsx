@@ -60,12 +60,16 @@ export default function ModuleShell({
   items,
   children,
   sideFooter,
+  sideBottom,
+  contentClassName,
 }: {
   brand: string;
   moduleName: string;
   items: SideItem[];
   children: React.ReactNode;
   sideFooter?: React.ReactNode;
+  sideBottom?: React.ReactNode;
+  contentClassName?: string;
 }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -160,7 +164,9 @@ export default function ModuleShell({
 
       {sideFooter && <div className="mt-5">{sideFooter}</div>}
 
-      <div className="mt-auto space-y-1 pt-6">
+      {sideBottom && <div className="mt-auto pt-6">{sideBottom}</div>}
+
+      <div className={`${sideBottom ? "" : "mt-auto"} space-y-1 pt-6`}>
         <Link
           href="/configuracoes"
           className="side-item"
@@ -220,7 +226,11 @@ export default function ModuleShell({
           <Menu size={16} />
           Menu {moduleName}
         </Button>
-        <div className="px-4 pb-16 sm:px-6 lg:px-8 lg:pt-7">{children}</div>
+        <div
+          className={contentClassName ?? "px-4 pb-16 sm:px-6 lg:px-8 lg:pt-7"}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

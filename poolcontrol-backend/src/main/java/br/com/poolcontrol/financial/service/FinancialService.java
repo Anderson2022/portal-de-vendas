@@ -26,6 +26,8 @@ public class FinancialService {
     private final AccountReceivableRepository receivableRepository;
     private final AccountPayableRepository payableRepository;
     private final CurrentUserService currentUser;
+    private final PayableClassificationService classification;
+    private final PayableAllocationService allocations;
 
     @Transactional(readOnly = true)
     public List<AccountReceivable> receivables() {
@@ -62,7 +64,10 @@ public class FinancialService {
         payable.setDescription(request.description());
         payable.setAmount(request.amount());
         payable.setDueDate(request.dueDate());
-        return payableRepository.save(payable);
+        classification.apply(payable, request);
+        var saved = payableRepository.saveAndFlush(payable);
+        allocations.save(saved.getId(), request);
+        return saved;
     }
 
     @Transactional

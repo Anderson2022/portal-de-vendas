@@ -11,11 +11,8 @@ export const financialRegisters = [
     "Centro de custo",
     "Organize os gastos por área ou operação.",
   ],
-  [
-    "projetos-unidades",
-    "Projeto / unidade",
-    "Relacione o lançamento à unidade responsável.",
-  ],
+  ["unidades", "Unidades", "Organize filiais, lojas, depósitos e operações."],
+  ["projetos", "Projetos", "Acompanhe obras, contratos e seus orçamentos."],
   [
     "naturezas-financeiras",
     "Natureza financeira",

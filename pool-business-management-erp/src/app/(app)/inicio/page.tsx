@@ -1,6 +1,6 @@
+import { NewSaleLink } from "@/components/commercial/new-sale-link";
 import { session, company } from "@/lib/backend/client";
 import { ButtonLink } from "@/components/ui/button";
-import { NewQuoteLink } from "@/components/commercial/new-quote-link";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import {
@@ -208,7 +208,7 @@ export default async function InicioPage() {
             Tudo para cuidar do seu negócio em um só lugar.
           </p>
         </div>
-        <NewQuoteLink label="Nova venda" />
+        <NewSaleLink />
       </Card>
 
       <Card as="section" className="card mt-7 p-5 sm:p-7">
@@ -323,7 +323,7 @@ export default async function InicioPage() {
           </div>
         </div>
         <div className="grid flex-1 grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
-          <NewQuoteLink label="Nova venda" />
+          <NewSaleLink />
           <NewClientButton
             variant="neu"
             label="Novo cliente"

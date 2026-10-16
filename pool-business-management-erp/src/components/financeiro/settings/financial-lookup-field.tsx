@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
@@ -9,20 +9,20 @@ export function FinancialLookupField({
   label,
   name,
   required = false,
+  defaultValue = "",
+  disabled = false,
 }: {
   label: string;
   name: string;
   required?: boolean;
+  defaultValue?: string;
+  disabled?: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(defaultValue ?? "");
   const [query, setQuery] = useState("");
   const [options, setOptions] = useState<string[]>([]);
   const key = `poolcontrol:financial:${name}`;
-
-  useEffect(() => {
-    setOptions(JSON.parse(localStorage.getItem(key) || "[]"));
-  }, [key]);
 
   function create() {
     const name = query.trim();
@@ -45,16 +45,21 @@ export function FinancialLookupField({
           className="input w-full !pr-10"
           name={name}
           value={value}
+          disabled={disabled}
           readOnly
           required={required}
           placeholder="Pesquisar"
         />
         <Button
+          disabled={disabled}
           type="button"
           variant="unstyled"
           className="absolute right-2 top-1/2 -translate-y-1/2"
           aria-label={`Pesquisar ${label}`}
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            setOptions(JSON.parse(localStorage.getItem(key) || "[]"));
+            setOpen(true);
+          }}
         >
           <Search size={17} />
         </Button>

@@ -1,7 +1,6 @@
 import { session, company } from "@/lib/backend/client";
 import Header from "@/components/header";
-import { stockData, financialData } from "@/lib/queries";
-import { cookies } from "next/headers";
+import { getHeaderAlerts } from "@/lib/header/get-header-alerts";
 
 export default async function AppLayout({
   children,
@@ -9,26 +8,7 @@ export default async function AppLayout({
   children: React.ReactNode;
 }) {
   const [user, business] = await Promise.all([session(), company()]);
-  const [stock, fin] = await Promise.all([stockData(), financialData()]);
-  const alerts = [
-    ...stock.rows
-      .filter((r) => r.status === "CRITICO")
-      .slice(0, 3)
-      .map((r) => ({
-        title: `${r.name} abaixo do mínimo`,
-        desc: `Disponível ${r.available} · mínimo ${r.minStock}`,
-        tone: "red",
-      })),
-    ...(fin.overdueReceiveCount > 0
-      ? [
-          {
-            title: `${fin.overdueReceiveCount} contas a receber vencidas`,
-            desc: "Cobrança recomendada hoje",
-            tone: "amber",
-          },
-        ]
-      : []),
-  ];
+  const alerts = await getHeaderAlerts(user.permissions);
 
   return (
     <div className="relative">

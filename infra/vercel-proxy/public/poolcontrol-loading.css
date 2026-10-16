@@ -1,0 +1,124 @@
+:root {
+  font-family: "Manrope", system-ui, sans-serif;
+  color: #262633;
+  background: #dedee1;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100svh;
+  margin: 0;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-card {
+  width: min(100%, 440px);
+  padding: 48px 28px;
+  text-align: center;
+  border: 1px solid #ffffff50;
+  border-radius: 24px;
+  box-shadow:
+    9px 9px 24px #bebec3,
+    -8px -8px 24px #fafafb;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+  border-radius: 16px;
+  background: #0a6ea6;
+  color: white;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: -1px;
+}
+
+h1 span {
+  color: #0a6ea6;
+}
+
+.subtitle,
+#status-description,
+footer {
+  color: #555567;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.subtitle {
+  margin: 8px 0 36px;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 22px;
+  border: 3px solid #b8c9d2;
+  border-top-color: #0a6ea6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#status-description {
+  margin: 10px 0 0;
+}
+
+button {
+  margin-top: 24px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: #0a6ea6;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #0a6ea6;
+  outline-offset: 4px;
+}
+
+footer {
+  margin-top: 28px;
+  font-size: 12px;
+}
+
+body[data-state="error"] .spinner {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}

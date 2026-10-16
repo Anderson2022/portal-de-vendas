@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
@@ -20,6 +21,24 @@ import java.time.OffsetDateTime;
 @Entity
 @Table(name = "accounts_payable")
 public class AccountPayable extends TenantEntity {
+
+    @Column(name = "competence_date")
+    private LocalDate competenceDate;
+
+    @Column(name = "plano_conta_id")
+    private UUID chartAccountId;
+
+    @Column(name = "centro_custo_id")
+    private UUID costCenterId;
+
+    @Column(name = "unidade_id")
+    private Long unitId;
+
+    @Column(name = "projeto_id")
+    private Long projectId;
+
+    @Column(name = "natureza_financeira_id")
+    private UUID financialNatureId;
 
     @Column(name = "supplier_id")
     private Long supplierId;

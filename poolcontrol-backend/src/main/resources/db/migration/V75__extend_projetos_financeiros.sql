@@ -1,0 +1,21 @@
+ALTER TABLE projetos_financeiros
+    ADD COLUMN cliente_id BIGINT REFERENCES customers(id),
+    ADD COLUMN unidade_id BIGINT,
+    ADD COLUMN centro_custo_principal_id UUID REFERENCES centros_custos(id),
+    ADD COLUMN responsavel_id BIGINT REFERENCES users(id),
+    ADD COLUMN tipo VARCHAR(30) NOT NULL DEFAULT 'INTERNO',
+    ADD COLUMN status VARCHAR(30) NOT NULL DEFAULT 'PLANEJADO',
+    ADD COLUMN data_inicio DATE,
+    ADD COLUMN data_fim_prevista DATE,
+    ADD COLUMN data_fim_real DATE,
+    ADD COLUMN valor_contratado NUMERIC(18, 2) NOT NULL DEFAULT 0 CHECK (valor_contratado >= 0),
+    ADD COLUMN orcamento_custo NUMERIC(18, 2) NOT NULL DEFAULT 0 CHECK (orcamento_custo >= 0),
+    ADD COLUMN receita_prevista NUMERIC(18, 2) NOT NULL DEFAULT 0 CHECK (receita_prevista >= 0),
+    ADD COLUMN descricao TEXT,
+    ADD COLUMN observacao TEXT,
+    ADD COLUMN criado_por BIGINT REFERENCES users(id),
+    ADD COLUMN atualizado_por BIGINT REFERENCES users(id),
+    ADD CONSTRAINT fk_projeto_unidade_empresa FOREIGN KEY (unidade_id, empresa_id)
+        REFERENCES filiais(id, empresa_id),
+    ADD CONSTRAINT ck_projeto_previsao CHECK (data_fim_prevista IS NULL OR data_inicio IS NULL OR data_fim_prevista >= data_inicio),
+    ADD CONSTRAINT ck_projeto_fim CHECK (data_fim_real IS NULL OR data_inicio IS NULL OR data_fim_real >= data_inicio);

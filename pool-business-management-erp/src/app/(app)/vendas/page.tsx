@@ -1,10 +1,13 @@
-import { SalesOverview } from "@/components/commercial/overview/sales-overview";
-import { featuredSale, vendasOverview } from "@/lib/queries";
+import { PdvScreen } from "@/components/vendas/pdv/pdv-screen";
+import "@/components/vendas/pdv/pdv.css";
 
 export const dynamic = "force-dynamic";
+export const metadata = { title: "Vendas · PDV · PoolControl" };
 
-export default async function VendasPage() {
-  const ov = await vendasOverview();
-  const featured = await featuredSale();
-  return <SalesOverview ov={ov} featured={featured} />;
+export default function VendasPage() {
+  return (
+    <div className="pdv-embedded">
+      <PdvScreen />
+    </div>
+  );
 }

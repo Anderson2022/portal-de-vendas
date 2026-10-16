@@ -5,10 +5,18 @@ import { SalesFunnel } from "./sales-funnel";
 import { SalesOverviewHeader } from "./sales-overview-header";
 import { SalesQuickActions } from "./sales-quick-actions";
 import { SalesRanking } from "./sales-ranking";
-import type { FeaturedSaleData, SalesOverviewData } from "./sales-overview-types";
+import type {
+  FeaturedSaleData,
+  SalesOverviewData,
+} from "./sales-overview-types";
 
-export function SalesOverview({ ov, featured }: { ov: SalesOverviewData; featured: FeaturedSaleData }) {
-
+export function SalesOverview({
+  ov,
+  featured,
+}: {
+  ov: SalesOverviewData;
+  featured: FeaturedSaleData;
+}) {
   return (
     <div className="mx-auto max-w-[1460px]">
       {/* ── Cabeçalho + banner ── */}
@@ -28,7 +36,13 @@ export function SalesOverview({ ov, featured }: { ov: SalesOverviewData; feature
         <div className="space-y-5">
           {featured ? (
             <FeaturedSaleCosts featured={featured} />
-          ) : <Card className="p-6"><p className="text-sm text-ink-500">Os custos aparecerão aqui após a primeira venda.</p></Card>}
+          ) : (
+            <Card className="p-6">
+              <p className="text-sm text-ink-500">
+                Os custos aparecerão aqui após a primeira venda.
+              </p>
+            </Card>
+          )}
 
           <SalesRanking ov={ov} />
         </div>

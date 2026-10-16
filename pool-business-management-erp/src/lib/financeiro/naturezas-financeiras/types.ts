@@ -1,0 +1,21 @@
+export type FinancialNature = {
+  id: string;
+  code: string;
+  name: string;
+  description: string | null;
+  parentId: string | null;
+  type: string;
+  group: string;
+  movement: string;
+  affectsCashFlow: boolean;
+  affectsDre: boolean;
+  affectsResult: boolean;
+  acceptsEntries: boolean;
+  displayOrder: number;
+  color: string | null;
+  icon: string | null;
+  startDate: string | null;
+  endDate: string | null;
+  notes: string | null;
+  active: boolean;
+};

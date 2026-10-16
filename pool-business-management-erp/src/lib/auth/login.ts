@@ -3,9 +3,9 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { backendOrigin } from "../backend/client";
+import { DEMO_EMAIL, DEMO_PASSWORD } from "@/lib/demonstracao/demo-credentials";
 
-const value = (fd: FormData, key: string) =>
-  String(fd.get(key) ?? "").trim();
+const value = (fd: FormData, key: string) => String(fd.get(key) ?? "").trim();
 
 type LoginResponse = {
   accessToken: string;
@@ -20,26 +20,28 @@ export async function login(fd: FormData) {
     redirect("/login?erro=credenciais");
   }
 
+  if (email.toLowerCase() === DEMO_EMAIL) {
+    if (password !== DEMO_PASSWORD) redirect("/login?erro=credenciais");
+    redirect("/demonstracao?iniciar=1");
+  }
+
   let response: Response;
 
   try {
-    response = await fetch(
-      `${backendOrigin()}/api/v1/auth/login`,
-      {
-        method: "POST",
+    response = await fetch(`${backendOrigin()}/api/v1/auth/login`, {
+      method: "POST",
 
-        headers: {
-          "Content-Type": "application/json",
-        },
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+      body: JSON.stringify({
+        email,
+        password,
+      }),
 
-        signal: AbortSignal.timeout(20000),
-      }
-    );
+      signal: AbortSignal.timeout(20000),
+    });
   } catch {
     redirect("/login?erro=conexao");
   }
@@ -52,17 +54,13 @@ export async function login(fd: FormData) {
 
   const jar = await cookies();
 
-  jar.set(
-    "pool_access_token",
-    data.accessToken,
-    {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      path: "/",
-      expires: new Date(data.expiresAt),
-    }
-  );
+  jar.set("pool_access_token", data.accessToken, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    expires: new Date(data.expiresAt),
+  });
 
   jar.delete("pc_user");
 

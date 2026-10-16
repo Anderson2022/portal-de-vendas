@@ -1,0 +1,20 @@
+export type Project = {
+  id: string;
+  code: string;
+  name: string;
+  customerId: string | null;
+  unitId: string | null;
+  costCenterId: string | null;
+  responsibleId: string | null;
+  type: string;
+  status: string;
+  startDate: string | null;
+  expectedEndDate: string | null;
+  actualEndDate: string | null;
+  contractAmount: number;
+  costBudget: number;
+  expectedRevenue: number;
+  description: string | null;
+  notes: string | null;
+  active: boolean;
+};

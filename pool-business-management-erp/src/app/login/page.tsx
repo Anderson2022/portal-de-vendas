@@ -1,18 +1,13 @@
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Waves, LockKeyhole, UserRound, ArrowRight } from "lucide-react";
-import { login } from "@/lib/auth/login";
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+import { Waves } from "lucide-react";
+import { LoginForm } from "@/components/auth/login-form";
+import { DemoAccessButton } from "@/components/auth/demo-access-button";
 
 export default async function LoginPage({
   searchParams,
 }: {
   searchParams: Promise<{ erro?: string }>;
 }) {
-  const jar = await cookies();
-
   const { erro } = await searchParams;
 
   return (
@@ -83,54 +78,8 @@ export default async function LoginPage({
             </div>
           )}
 
-          <form action={login} className="mt-6 space-y-4">
-            <label className="block">
-              <span className="mb-1.5 block text-[11.5px] font-extrabold uppercase tracking-[0.08em] text-ink-300">
-                E-mail
-              </span>
-              <div className="relative">
-                <UserRound
-                  size={16}
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-300"
-                />
-                <Input
-                  name="login"
-                  type="email"
-                  required
-                  className="input !pl-10"
-                  placeholder="voce@empresa.com"
-                  autoComplete="username"
-                />
-              </div>
-            </label>
-            <label className="block">
-              <span className="mb-1.5 block text-[11.5px] font-extrabold uppercase tracking-[0.08em] text-ink-300">
-                Senha
-              </span>
-              <div className="relative">
-                <LockKeyhole
-                  size={16}
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-300"
-                />
-                <Input
-                  name="password"
-                  type="password"
-                  required
-                  className="input !pl-10"
-                  placeholder="••••••••"
-                  autoComplete="current-password"
-                />
-              </div>
-            </label>
-            <Button
-              variant="unstyled"
-              type="submit"
-              className="btn btn-primary w-full !py-3.5 text-[15px]"
-            >
-              Entrar
-              <ArrowRight size={17} strokeWidth={2.5} />
-            </Button>
-          </form>
+          <LoginForm />
+          <DemoAccessButton />
 
           <p className="mt-5 text-center text-xs text-ink-500">
             Use as credenciais fornecidas pelo administrador da sua empresa.

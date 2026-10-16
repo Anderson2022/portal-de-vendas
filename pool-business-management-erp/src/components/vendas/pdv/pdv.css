@@ -1,0 +1,3412 @@
+.poolcontrol-pdv {
+  font-family: var(--sans);
+  color: #101d3c;
+  background: transparent;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+.poolcontrol-pdv * {
+  box-sizing: border-box;
+}
+.poolcontrol-pdv,
+.poolcontrol-pdv,
+.poolcontrol-pdv {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+.poolcontrol-pdv button,
+.poolcontrol-pdv input,
+.poolcontrol-pdv select {
+  font: inherit;
+}
+.poolcontrol-pdv button {
+  cursor: pointer;
+}
+.poolcontrol-pdv button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+.poolcontrol-pdv button:focus-visible,
+.poolcontrol-pdv input:focus-visible,
+.poolcontrol-pdv select:focus-visible {
+  outline: 3px solid #7e9cff;
+  outline-offset: 2px;
+}
+.poolcontrol-pdv button {
+  border: 0;
+}
+.poolcontrol-pdv input {
+  min-width: 0;
+}
+.poolcontrol-pdv h1,
+.poolcontrol-pdv h2,
+.poolcontrol-pdv h3,
+.poolcontrol-pdv h4,
+.poolcontrol-pdv p {
+  margin: 0;
+}
+.poolcontrol-pdv kbd {
+  font-family: inherit;
+  background: #eef3fb;
+  color: #435470;
+  padding: 5px 7px;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.poolcontrol-pdv .app {
+  min-height: 100vh;
+}
+.poolcontrol-pdv .is-home {
+  background: transparent;
+  color: var(--color-ink-900);
+}
+.poolcontrol-pdv .is-work {
+  background: #f3f6fa;
+  color: #101d3c;
+}
+.poolcontrol-pdv .topbar {
+  height: 73px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 22px;
+  position: relative;
+  z-index: 11;
+}
+.poolcontrol-pdv .dashboard-topbar {
+  background: #030c16;
+  border-bottom: 1px solid #213045;
+}
+.poolcontrol-pdv .work-topbar {
+  height: 65px;
+  background: #071729;
+  border-bottom: 1px solid #193047;
+  color: white;
+  gap: 10px;
+}
+.poolcontrol-pdv .brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: inherit;
+  background: none;
+  white-space: nowrap;
+  padding: 5px 4px;
+}
+.poolcontrol-pdv .brand > svg {
+  color: #1265ff;
+  stroke-width: 2.6;
+}
+.poolcontrol-pdv .brand > strong {
+  font-weight: 800;
+  letter-spacing: -1px;
+  font-size: 29px;
+}
+.poolcontrol-pdv .work-topbar .brand > strong {
+  font-size: 25px;
+}
+.poolcontrol-pdv .online {
+  display: inline-flex;
+  color: #0ce6a2;
+  background: #003231a6;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-left: 2px;
+}
+.poolcontrol-pdv .work-topbar .online {
+  font-size: 10px;
+  padding: 5px 7px;
+}
+.poolcontrol-pdv .global-search {
+  height: 47px;
+  max-width: 834px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0e1d30;
+  border: 1px solid #334d69;
+  border-radius: 8px;
+  padding: 0 12px;
+  margin-left: 26px;
+  color: #d9e8ff;
+}
+.poolcontrol-pdv .global-search input {
+  background: none;
+  border: 0;
+  outline: 0;
+  color: white;
+  flex: 1;
+  font-size: 13px;
+}
+.poolcontrol-pdv .global-search input::placeholder {
+  color: #bac8d9;
+}
+.poolcontrol-pdv .global-search kbd,
+.poolcontrol-pdv .work-search-button kbd {
+  background: #1b2c43;
+  color: #dce8fd;
+}
+.poolcontrol-pdv .store-switch,
+.poolcontrol-pdv .cashier {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  background: #0e1d30;
+  padding: 8px 12px;
+  border-radius: 8px;
+  min-width: 150px;
+  text-align: left;
+  font-size: 12px;
+}
+.poolcontrol-pdv .store-switch span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.poolcontrol-pdv .store-switch small,
+.poolcontrol-pdv .cashier span {
+  font-size: 11px;
+  color: #00e4a2;
+}
+.poolcontrol-pdv .store-switch > svg:last-child {
+  margin-left: auto;
+}
+.poolcontrol-pdv .avatar {
+  height: 39px;
+  width: 39px;
+  background: linear-gradient(145deg, #2b66ff, #0053e8);
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+.poolcontrol-pdv .user-switch {
+  color: inherit;
+  background: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.poolcontrol-pdv .icon-btn {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+}
+.poolcontrol-pdv .icon-btn:hover {
+  background: #e7efff;
+  color: #135eff;
+}
+.poolcontrol-pdv .dashboard-topbar > .icon-btn {
+  background: #0d1b2d;
+  color: white;
+  width: 42px;
+  height: 42px;
+  margin-left: auto;
+}
+.poolcontrol-pdv .user-menu {
+  position: fixed;
+  top: 62px;
+  right: 55px;
+  z-index: 60;
+  background: white;
+  color: #152548;
+  padding: 10px;
+  border-radius: 13px;
+  box-shadow: 0 18px 50px #0005;
+  min-width: 235px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.poolcontrol-pdv .user-menu > strong,
+.poolcontrol-pdv .user-menu > small {
+  padding: 5px 10px;
+}
+.poolcontrol-pdv .user-menu small {
+  font-size: 11px;
+  color: #78869a;
+}
+.poolcontrol-pdv .user-menu button {
+  text-align: left;
+  background: transparent;
+  border-radius: 7px;
+  padding: 10px;
+  display: flex;
+  gap: 12px;
+  color: #213454;
+  align-items: center;
+}
+.poolcontrol-pdv .user-menu button:hover {
+  background: #f2f6fc;
+}
+/* Dashboard */
+.poolcontrol-pdv .dashboard-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  min-height: calc(100vh - 73px);
+}
+.poolcontrol-pdv .sidebar {
+  background: linear-gradient(180deg, #071b30 0%, #0d2338 100%);
+  margin: 0 0 14px 0;
+  border-bottom-right-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 12px;
+  gap: 20px;
+}
+.poolcontrol-pdv .sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.poolcontrol-pdv .sidebar nav button {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 17px;
+  border-radius: 9px;
+  background: transparent;
+  color: #f3f7fe;
+  text-align: left;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.poolcontrol-pdv .sidebar nav button:hover {
+  background: #183753;
+}
+.poolcontrol-pdv .sidebar nav button.selected {
+  background: linear-gradient(115deg, #066ef6, #0336d5);
+  box-shadow: 0 10px 22px #004ab243;
+}
+.poolcontrol-pdv .sidebar-help {
+  margin-top: auto;
+  color: white;
+  background: #081729;
+  border: 1px solid #1d3146;
+  border-radius: 8px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 0 12px;
+  text-align: left;
+  font-size: 13px;
+}
+.poolcontrol-pdv .dashboard-main {
+  padding: 10px 14px 20px;
+  min-width: 0;
+}
+.poolcontrol-pdv .welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 8px 20px;
+}
+.poolcontrol-pdv .welcome-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.poolcontrol-pdv .welcome-title h1 {
+  font-size: 27px;
+  letter-spacing: -0.7px;
+}
+.poolcontrol-pdv .welcome-title p {
+  font-size: 16px;
+  color: #c6d5e7;
+  margin-top: 5px;
+}
+.poolcontrol-pdv .wave {
+  font-size: 45px;
+}
+.poolcontrol-pdv .date-box {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 12px;
+  background: #0e1c2f;
+  border-radius: 11px;
+  color: white;
+}
+.poolcontrol-pdv .date-box span {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 185px;
+}
+.poolcontrol-pdv .date-box small {
+  font-size: 11px;
+  color: #c6d6eb;
+  text-transform: capitalize;
+}
+.poolcontrol-pdv .date-box > b {
+  font-size: 25px;
+  border-left: 1px solid #233a50;
+  padding-left: 13px;
+}
+.poolcontrol-pdv .module-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 17px;
+  margin: 0 7px 20px;
+}
+.poolcontrol-pdv .module-card {
+  text-decoration: none;
+  color: #f6f9ff;
+  text-align: left;
+  height: 390px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  color: white;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+  background-color: #0b1d31;
+}
+.poolcontrol-pdv .module-card .pdv-module-image {
+  z-index: 0;
+  object-fit: cover;
+  object-position: top center;
+  height: 70% !important;
+  pointer-events: none;
+}
+.poolcontrol-pdv .module-card:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 16%,
+    var(--bggradient) 66%,
+    var(--bggradient) 100%
+  );
+}
+.poolcontrol-pdv .module-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 30px #0007;
+}
+.poolcontrol-pdv .module-card.blue {
+  --edge: #0663fc;
+  --color: #0c60ff;
+  --bggradient: #001733;
+}
+.poolcontrol-pdv .module-card.amber {
+  --edge: #b15e10;
+  --color: #955111;
+  --bggradient: #241509;
+}
+.poolcontrol-pdv .module-card.red {
+  --edge: #e62b42;
+  --color: #c71a31;
+  --bggradient: #300915;
+}
+.poolcontrol-pdv .module-card.purple {
+  --edge: #8343fd;
+  --color: #722bd8;
+  --bggradient: #180d37;
+}
+.poolcontrol-pdv .module-card.green {
+  --edge: #008959;
+  --color: #038856;
+  --bggradient: #08241e;
+}
+.poolcontrol-pdv .module-card-spacer {
+  flex: 1;
+}
+.poolcontrol-pdv .module-bottom {
+  position: relative;
+  z-index: 2;
+  padding: 13px 15px 12px;
+}
+.poolcontrol-pdv .module-icon {
+  width: 65px;
+  height: 65px;
+  background: var(--color);
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 17px #0004;
+  margin-bottom: 7px;
+}
+.poolcontrol-pdv .module-bottom h2 {
+  font-size: 26px;
+  letter-spacing: -1px;
+  margin: 2px 0 8px;
+}
+.poolcontrol-pdv .module-bottom p {
+  font-size: 14px;
+  line-height: 1.55;
+  min-height: 43px;
+  color: #e4ebf5;
+}
+.poolcontrol-pdv .enter {
+  margin-top: 12px;
+  border: 1px solid #ffffff26;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color);
+  padding: 12px 17px;
+  border-radius: 13px;
+  font-weight: 700;
+  font-size: 17px;
+  box-shadow: inset 0 0 12px #ffffff0d;
+}
+.poolcontrol-pdv .tools {
+  background: var(--color-page);
+  border: 1px solid #ffffff30;
+  box-shadow:
+    9px 9px 19px #bebec3,
+    -8px -8px 18px #fafafb;
+  border-radius: 22px;
+  padding: 12px 10px 10px;
+  margin: 0 0 0 0;
+}
+.poolcontrol-pdv .tools-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.poolcontrol-pdv .tools-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.poolcontrol-pdv .tool-heading-icon {
+  width: 48px;
+  height: 49px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--color-water-100);
+  color: #0784ff;
+}
+.poolcontrol-pdv .tools-heading h2 {
+  font-size: 19px;
+}
+.poolcontrol-pdv .tools-heading p {
+  font-size: 12px;
+  color: var(--color-ink-700);
+  margin-top: 5px;
+}
+.poolcontrol-pdv .tools-heading > button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-page);
+  color: var(--color-ink-900);
+  border: 1px solid #ffffff30;
+  box-shadow:
+    5px 5px 10px #bdbdc3,
+    -5px -5px 10px #f9f9fa;
+  padding: 12px 14px;
+  border-radius: 9px;
+  font-size: 12px;
+}
+.poolcontrol-pdv .tools-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+}
+.poolcontrol-pdv .tool-group {
+  background: color-mix(in srgb, var(--groupicon) 5%, var(--color-page));
+  border: 1px solid color-mix(in srgb, var(--groupicon) 25%, transparent);
+  border-radius: 16px;
+  padding: 10px 12px;
+}
+.poolcontrol-pdv .tone-blue {
+  --groupbg: #061d37;
+  --groupborder: #0d3766;
+  --groupcolor: #64adff;
+  --groupicon: #0643a2;
+}
+.poolcontrol-pdv .tone-green {
+  --groupbg: #072629;
+  --groupborder: #185447;
+  --groupcolor: #9dedc9;
+  --groupicon: #007f53;
+}
+.poolcontrol-pdv .tone-purple {
+  --groupbg: #191b3d;
+  --groupborder: #292d67;
+  --groupcolor: #d8b2ff;
+  --groupicon: #4c269f;
+}
+.poolcontrol-pdv .tone-amber {
+  --groupbg: #302a1a;
+  --groupborder: #5d4620;
+  --groupcolor: #ffdda0;
+  --groupicon: #965200;
+}
+.poolcontrol-pdv .tone-cyan {
+  --groupbg: #0a2938;
+  --groupborder: #225263;
+  --groupcolor: #b4f4fb;
+  --groupicon: #154d61;
+}
+.poolcontrol-pdv .tool-group h3 {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--groupicon);
+  white-space: nowrap;
+  margin: 3px 2px 11px;
+}
+.poolcontrol-pdv .tool-link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 8px;
+  color: var(--color-ink-900);
+  text-align: left;
+  padding: 4px;
+  background: #ffffff30;
+  margin-top: 4px;
+  min-height: 48px;
+}
+.poolcontrol-pdv .tool-link:hover {
+  background: #ffffff65;
+}
+.poolcontrol-pdv .tool-link-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--groupicon);
+  display: grid;
+  place-items: center;
+  color: white;
+  border-radius: 9px;
+  flex-shrink: 0;
+}
+.poolcontrol-pdv .tool-link > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.poolcontrol-pdv .tool-link strong {
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.poolcontrol-pdv .tool-link small {
+  font-size: 10.5px;
+  color: var(--color-ink-700);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.poolcontrol-pdv .tool-link kbd {
+  background: color-mix(in srgb, var(--groupicon) 12%, var(--color-page));
+  color: var(--groupicon);
+  margin-left: auto;
+}
+.poolcontrol-pdv .mobile-menu {
+  display: none;
+}
+/* Top bar operations */
+.poolcontrol-pdv .work-topbar {
+  padding: 0 12px;
+}
+.poolcontrol-pdv .work-topbar .brand {
+  gap: 9px;
+}
+.poolcontrol-pdv .mode-tabs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 8px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+.poolcontrol-pdv .mode-tabs::-webkit-scrollbar {
+  display: none;
+}
+.poolcontrol-pdv .mode-tab {
+  background: #14253a;
+  color: #e1eaff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 7px;
+  padding: 11px 14px;
+  height: 43px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.poolcontrol-pdv .mode-tab.active,
+.poolcontrol-pdv .mode-tab:hover {
+  background: linear-gradient(120deg, #1668ff, #0045e6);
+  color: white;
+  box-shadow: 0 3px 10px #0c67ff4b;
+}
+.poolcontrol-pdv .work-search-button {
+  margin-left: auto;
+  min-width: 145px;
+  max-width: 260px;
+  flex: 1;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #10243c;
+  border: 1px solid #28415b;
+  color: #d6e1f2;
+  border-radius: 8px;
+  height: 42px;
+  padding: 0 11px;
+  font-size: 11px;
+  text-align: left;
+}
+.poolcontrol-pdv .work-search-button span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+.poolcontrol-pdv .cashier {
+  min-width: 90px;
+  display: block;
+  line-height: 1.5;
+  padding: 4px 8px;
+  height: 43px;
+}
+.poolcontrol-pdv .cashier svg {
+  vertical-align: middle;
+}
+.poolcontrol-pdv .cashier span {
+  display: block;
+}
+.poolcontrol-pdv .work-topbar .avatar {
+  width: 34px;
+  height: 34px;
+}
+.poolcontrol-pdv .work-topbar > .icon-btn {
+  background: #12253b;
+  color: white;
+}
+.poolcontrol-pdv .work-main {
+  padding: 8px;
+  min-height: calc(100vh - 65px);
+}
+.poolcontrol-pdv .work-panel {
+  background: white;
+  border: 1px solid #e3e9f1;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px #16295009;
+  min-width: 0;
+  min-height: 0;
+}
+.poolcontrol-pdv .pos-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(310px, 35%);
+  gap: 10px;
+  min-height: calc(100vh - 81px);
+}
+.poolcontrol-pdv .sale-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 17px;
+  min-height: calc(100vh - 81px);
+}
+.poolcontrol-pdv .panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 16px;
+}
+.poolcontrol-pdv .panel-title h2 {
+  font-size: 19px;
+  letter-spacing: -0.4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.poolcontrol-pdv .panel-title > button {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  background: #f4f7fd;
+  color: #54647e;
+  padding: 9px 10px;
+  border-radius: 7px;
+}
+.poolcontrol-pdv .panel-title button.danger-text {
+  color: #eb3048;
+  background: #fff0f3;
+}
+.poolcontrol-pdv .scan-input,
+.poolcontrol-pdv .market-scan {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 48px;
+  border: 1px solid #d8e2f1;
+  border-radius: 9px;
+  padding: 0 12px;
+  color: #2464ed;
+  box-shadow: 0 0 0 1px #edf2fc;
+}
+.poolcontrol-pdv .scan-input input,
+.poolcontrol-pdv .market-scan input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  font-size: 13px;
+  color: #182c54;
+}
+.poolcontrol-pdv .scan-input input::placeholder,
+.poolcontrol-pdv .market-scan input::placeholder {
+  color: #8b9ab6;
+}
+.poolcontrol-pdv .sale-items {
+  flex: 1;
+  overflow: auto;
+  min-height: 240px;
+  margin-top: 14px;
+}
+.poolcontrol-pdv .sale-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 6px;
+  border: 1px solid #edf0f5;
+  border-bottom: 0;
+  min-height: 93px;
+}
+.poolcontrol-pdv .sale-item:last-child {
+  border-bottom: 1px solid #edf0f5;
+  border-radius: 0 0 9px 9px;
+}
+.poolcontrol-pdv .sale-item:first-child {
+  border-radius: 9px 9px 0 0;
+}
+.poolcontrol-pdv .sale-item > img {
+  width: 61px;
+  height: 61px;
+  object-fit: contain;
+  background: #f8f9fc;
+  border-radius: 8px;
+}
+.poolcontrol-pdv .sale-item-name {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  gap: 5px;
+}
+.poolcontrol-pdv .sale-item-name b {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.poolcontrol-pdv .sale-item-name small {
+  color: #7c8baa;
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.poolcontrol-pdv .sale-item-price {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  white-space: nowrap;
+  text-align: right;
+}
+.poolcontrol-pdv .sale-item-price b {
+  font-size: 12px;
+}
+.poolcontrol-pdv .sale-item-price small {
+  font-size: 10px;
+  color: #76869f;
+}
+.poolcontrol-pdv .sale-item > .icon-btn {
+  width: 24px;
+  color: #a6afc0;
+}
+.poolcontrol-pdv .sale-item > .icon-btn:hover {
+  color: #f4435d;
+}
+.poolcontrol-pdv .qty-control {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #e5ebf4;
+  border-radius: 7px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.poolcontrol-pdv .qty-control button {
+  background: #f5f8fe;
+  color: #204077;
+  padding: 5px;
+  display: grid;
+  place-items: center;
+}
+.poolcontrol-pdv .qty-control b {
+  min-width: 25px;
+  text-align: center;
+  font-size: 12px;
+}
+.poolcontrol-pdv .sale-bottom {
+  border-top: 1px solid #e9edf4;
+  padding-top: 12px;
+  margin-top: 12px;
+}
+.poolcontrol-pdv .sale-tools {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+.poolcontrol-pdv .sale-tools button,
+.poolcontrol-pdv .checkout-actions button,
+.poolcontrol-pdv .market-footer button:not(.primary-btn) {
+  background: #f2f6fc;
+  color: #223557;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 7px;
+  padding: 11px 6px;
+  font-size: 11px;
+  flex: 1;
+  white-space: nowrap;
+}
+.poolcontrol-pdv .sale-summary > p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #4a5c7d;
+  font-size: 13px;
+  margin: 10px 0;
+}
+.poolcontrol-pdv .sale-summary > p b {
+  font-weight: 500;
+}
+.poolcontrol-pdv .sale-summary > p button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #f13b52;
+  background: none;
+  font-size: 12px;
+}
+.poolcontrol-pdv .sale-total {
+  border-top: 1px solid #edf0f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 17px 0 14px;
+  padding-top: 12px;
+  font-weight: 700;
+  font-size: 23px;
+}
+.poolcontrol-pdv .sale-total strong {
+  font-size: 30px;
+  color: #184cf6;
+}
+.poolcontrol-pdv .primary-btn {
+  background: linear-gradient(115deg, #1a64ff, #0b3fea);
+  color: white;
+  min-height: 49px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 13px 18px;
+  white-space: nowrap;
+  transition: filter 0.2s;
+}
+.poolcontrol-pdv .primary-btn:hover {
+  filter: brightness(1.1);
+}
+.poolcontrol-pdv .sale-bottom > .primary-btn {
+  width: 100%;
+}
+.poolcontrol-pdv .work-content {
+  padding: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.poolcontrol-pdv .catalog-header {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+}
+.poolcontrol-pdv .categories {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+.poolcontrol-pdv .categories::-webkit-scrollbar {
+  display: none;
+}
+.poolcontrol-pdv .chip {
+  border: 1px solid #e1e8f3;
+  padding: 10px 15px;
+  background: #f9fbfe;
+  color: #233755;
+  border-radius: 24px;
+  white-space: nowrap;
+  font-size: 11px;
+  min-width: 0;
+}
+.poolcontrol-pdv .chip:hover {
+  border-color: #83a6f8;
+}
+.poolcontrol-pdv .chip.active {
+  color: #0961f8;
+  background: #e9f1ff;
+  border: 1px solid #609dff;
+  font-weight: 700;
+}
+.poolcontrol-pdv .catalog-search {
+  height: 39px;
+  min-width: 210px;
+  max-width: 370px;
+  width: 32%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid #d9e2f0;
+  border-radius: 7px;
+  padding: 0 10px;
+  color: #7a8da8;
+}
+.poolcontrol-pdv .catalog-search input {
+  outline: 0;
+  border: 0;
+  flex: 1;
+  font-size: 11px;
+  width: 100%;
+}
+.poolcontrol-pdv .catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  align-content: start;
+  overflow: auto;
+}
+.poolcontrol-pdv .product-card {
+  background: white;
+  border: 1px solid #e6ecf4;
+  border-radius: 11px;
+  overflow: hidden;
+  position: relative;
+  transition:
+    border-color 0.18s,
+    box-shadow 0.18s;
+  min-width: 0;
+}
+.poolcontrol-pdv .product-card:hover {
+  border-color: #a4bdff;
+  box-shadow: 0 5px 18px #1a52be14;
+}
+.poolcontrol-pdv .product-card > img {
+  width: 100%;
+  height: 145px;
+  object-fit: contain;
+  display: block;
+  background: white;
+}
+.poolcontrol-pdv .product-info {
+  padding: 8px 12px 11px;
+}
+.poolcontrol-pdv .product-info > strong {
+  font-size: 12px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.poolcontrol-pdv .product-price {
+  margin-top: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.poolcontrol-pdv .product-price > b {
+  color: #0a55ff;
+  font-size: 16px;
+  white-space: nowrap;
+}
+.poolcontrol-pdv .product-price > span {
+  background: #d8fae8;
+  color: #009e53;
+  border-radius: 7px;
+  padding: 3px 7px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.poolcontrol-pdv .invisible-add {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+.poolcontrol-pdv .market-grid {
+  flex: 1;
+  grid-auto-rows: minmax(193px, auto);
+}
+.poolcontrol-pdv .food-grid {
+  grid-auto-rows: 236px;
+  overflow: auto;
+  padding: 2px;
+}
+.poolcontrol-pdv .food-card > img {
+  height: 112px;
+  object-fit: cover;
+  margin: 7px;
+  width: calc(100% - 14px);
+  border-radius: 7px;
+}
+.poolcontrol-pdv .food-card .product-info {
+  padding: 0 10px 10px;
+}
+.poolcontrol-pdv .product-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: #75839b;
+  font-size: 11px;
+  line-height: 1.45;
+  min-height: 31px;
+  margin-top: 5px;
+}
+.poolcontrol-pdv .food-card .product-price {
+  margin: 4px 0 8px;
+}
+.poolcontrol-pdv .add-product {
+  border-radius: 6px;
+  background: #0a64f8;
+  color: white;
+  width: 100%;
+  height: 34px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.poolcontrol-pdv .add-product:hover {
+  background: #003ed7;
+}
+/* Scanner/Supermercado and card */
+.poolcontrol-pdv .market-scan {
+  height: 53px;
+}
+.poolcontrol-pdv .work-content:has(.item-table) {
+  gap: 15px;
+}
+.poolcontrol-pdv .table-scroll {
+  overflow: auto;
+}
+.poolcontrol-pdv .data-table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  font-size: 12px;
+}
+.poolcontrol-pdv .data-table th {
+  background: #f2f6fd;
+  color: #526581;
+  font-weight: 600;
+  font-size: 11px;
+  padding: 13px 12px;
+  white-space: nowrap;
+}
+.poolcontrol-pdv .data-table td {
+  border-bottom: 1px solid #edf0f6;
+  padding: 14px 12px;
+  white-space: nowrap;
+  color: #30405c;
+}
+.poolcontrol-pdv .item-table {
+  min-width: 620px;
+}
+.poolcontrol-pdv .market-summary {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border-top: 1px solid #e9eef6;
+  padding: 20px 5px 14px;
+  margin-top: auto;
+}
+.poolcontrol-pdv .market-summary > span {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #5b6c84;
+  font-size: 11px;
+}
+.poolcontrol-pdv .market-summary > span b {
+  font-size: 14px;
+  color: #142340;
+}
+.poolcontrol-pdv .market-summary > span:last-child {
+  margin-left: auto;
+}
+.poolcontrol-pdv .market-summary strong {
+  color: #0c4bff;
+  font-size: 23px;
+}
+.poolcontrol-pdv .market-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.poolcontrol-pdv .market-footer .primary-btn {
+  margin-left: auto;
+}
+.poolcontrol-pdv .card-tabs,
+.poolcontrol-pdv .small-segment,
+.poolcontrol-pdv .segment {
+  display: flex;
+  gap: 5px;
+}
+.poolcontrol-pdv .card-tabs button,
+.poolcontrol-pdv .small-segment button {
+  background: #f5f7fb;
+  color: #5c6c84;
+  padding: 12px 17px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 7px;
+  font-size: 12px;
+}
+.poolcontrol-pdv .card-tabs button.active,
+.poolcontrol-pdv .small-segment button.active {
+  background: #e9f2ff;
+  color: #0758f3;
+  font-weight: 700;
+  border-bottom: 2px solid #135cf7;
+}
+.poolcontrol-pdv .card-reader {
+  border: 1px solid #4478ff;
+  background: linear-gradient(115deg, #f1f5ff, white);
+  height: 95px;
+  border-radius: 11px;
+  color: #195bfc;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 16px;
+  margin-top: 12px;
+}
+.poolcontrol-pdv .card-reader input {
+  outline: 0;
+  border: 0;
+  background: none;
+  flex: 1;
+  font-size: 14px;
+}
+.poolcontrol-pdv .identified-customer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8faff;
+  padding: 14px;
+  border-radius: 10px;
+}
+.poolcontrol-pdv .customer-avatar {
+  width: 44px;
+  height: 44px;
+  background: #1967ff;
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.poolcontrol-pdv .identified-customer span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.poolcontrol-pdv .identified-customer small {
+  color: #74829e;
+  font-size: 11px;
+}
+.poolcontrol-pdv .identified-customer > button {
+  font-size: 12px;
+  padding: 10px 15px;
+  background: #eaf1ff;
+  color: #2559b6;
+  border-radius: 7px;
+}
+.poolcontrol-pdv .work-content > h3 {
+  font-size: 15px;
+  margin-top: 6px;
+}
+.poolcontrol-pdv .card-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.poolcontrol-pdv .card-info-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  color: #576a87;
+}
+.poolcontrol-pdv .card-info-grid input {
+  border: 1px solid #e7edf6;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 13px;
+  color: #142342;
+  background: #f8fbff;
+}
+.poolcontrol-pdv .toggle-row {
+  background: #f5f8fd;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.poolcontrol-pdv .toggle-row small {
+  font-size: 11px;
+  color: #2864ee;
+  margin-left: 7px;
+}
+.poolcontrol-pdv .toggle-row input {
+  margin-left: auto;
+  accent-color: #185af7;
+  width: 17px;
+  height: 17px;
+}
+.poolcontrol-pdv .checkout-spacer {
+  flex: 1;
+  min-height: 10px;
+}
+/* Mesas */
+.poolcontrol-pdv .tables-top {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.poolcontrol-pdv .table-filter {
+  display: flex;
+  gap: 7px;
+}
+.poolcontrol-pdv .table-filter .chip {
+  padding: 6px 12px;
+}
+.poolcontrol-pdv .tables-work {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(245px, 1fr);
+  gap: 12px;
+  min-height: 355px;
+}
+.poolcontrol-pdv .tables-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.poolcontrol-pdv .table-card {
+  border: 1px solid #d9f1e4;
+  background: #eafbf2;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #099455;
+  padding: 10px 4px;
+  min-height: 95px;
+}
+.poolcontrol-pdv .table-card.occupied {
+  background: #fff6e9;
+  border-color: #ffe4b1;
+  color: #bb7b14;
+}
+.poolcontrol-pdv .table-card.chosen {
+  background: #eaf0ff;
+  color: #1758ff;
+  border: 2px solid #3979ff;
+}
+.poolcontrol-pdv .table-card strong {
+  font-size: 11px;
+}
+.poolcontrol-pdv .table-card small {
+  font-size: 10px;
+}
+.poolcontrol-pdv .table-card b {
+  font-size: 11px;
+}
+.poolcontrol-pdv .table-detail {
+  display: flex;
+  flex-direction: column;
+  padding: 13px;
+  background: #f9fbfe;
+  border: 1px solid #edf1f7;
+  border-radius: 9px;
+}
+.poolcontrol-pdv .table-detail h3 {
+  font-size: 16px;
+}
+.poolcontrol-pdv .table-detail > small {
+  font-size: 10px;
+  color: #72819c;
+}
+.poolcontrol-pdv .table-detail-items {
+  flex: 1;
+  margin: 15px 0;
+}
+.poolcontrol-pdv .table-detail-items > div:not(.empty) {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #e7ebf3;
+  font-size: 10px;
+}
+.poolcontrol-pdv .table-detail-items img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.poolcontrol-pdv .table-detail-items span {
+  flex: 1;
+}
+.poolcontrol-pdv .table-detail-items .qty-control button {
+  padding: 3px;
+}
+.poolcontrol-pdv .table-detail-items b {
+  white-space: nowrap;
+}
+.poolcontrol-pdv .table-detail > p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  margin-bottom: 9px;
+}
+.poolcontrol-pdv .table-detail .table-grand {
+  font-size: 15px;
+  font-weight: 700;
+}
+.poolcontrol-pdv .table-detail > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #eaf1fc;
+  color: #1e3b67;
+  border-radius: 6px;
+  margin-top: 6px;
+  padding: 9px;
+  font-size: 11px;
+}
+.poolcontrol-pdv .table-detail > button.primary-btn {
+  color: white;
+  background: #1958f6;
+  min-height: 39px;
+}
+.poolcontrol-pdv .table-catalog {
+  margin-top: 8px;
+}
+.poolcontrol-pdv .section-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+.poolcontrol-pdv .section-caption h3 {
+  font-size: 16px;
+}
+.poolcontrol-pdv .section-caption span {
+  font-size: 11px;
+  color: #71809a;
+}
+.poolcontrol-pdv .section-caption button {
+  background: #edf3ff;
+  color: #115aff;
+  font-size: 12px;
+  padding: 8px 11px;
+  border-radius: 7px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.poolcontrol-pdv .small-catalog {
+  display: flex;
+  gap: 8px;
+  overflow: auto;
+  padding-bottom: 6px;
+}
+.poolcontrol-pdv .small-catalog button {
+  border: 1px solid #e8edf4;
+  border-radius: 8px;
+  min-width: 175px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-align: left;
+  padding: 6px;
+  background: white;
+}
+.poolcontrol-pdv .small-catalog img {
+  height: 41px;
+  width: 55px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.poolcontrol-pdv .small-catalog span {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.poolcontrol-pdv .small-catalog b {
+  font-size: 10px;
+}
+.poolcontrol-pdv .small-catalog small {
+  color: #0c5afd;
+  font-size: 11px;
+}
+.poolcontrol-pdv .small-catalog svg {
+  color: #0b62fa;
+}
+/* Delivery */
+.poolcontrol-pdv .delivery-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 64%) minmax(350px, 1fr);
+  gap: 9px;
+  min-height: calc(100vh - 81px);
+}
+.poolcontrol-pdv .delivery-left {
+  padding: 16px;
+  overflow: auto;
+  max-height: calc(100vh - 81px);
+}
+.poolcontrol-pdv .segment {
+  margin-bottom: 13px;
+}
+.poolcontrol-pdv .segment button {
+  height: 44px;
+  min-width: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #eef2f7;
+  color: #2c4061;
+  font-size: 13px;
+  border-radius: 7px;
+}
+.poolcontrol-pdv .segment button.active {
+  background: #0869fc;
+  color: white;
+  font-weight: 700;
+}
+.poolcontrol-pdv .tiny-count {
+  font-size: 10px;
+}
+.poolcontrol-pdv .delivery-left .catalog-header {
+  margin-bottom: 15px;
+}
+.poolcontrol-pdv .checkout {
+  padding: 17px 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.poolcontrol-pdv .checkout h4 {
+  font-size: 12px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-top: 9px;
+}
+.poolcontrol-pdv .checkout-list {
+  min-height: 70px;
+}
+.poolcontrol-pdv .checkout-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #ecf1f7;
+  padding: 8px 0;
+}
+.poolcontrol-pdv .checkout-item > img {
+  width: 57px;
+  height: 46px;
+  object-fit: cover;
+  border-radius: 7px;
+}
+.poolcontrol-pdv .checkout-item > span {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.poolcontrol-pdv .checkout-item b {
+  font-size: 11px;
+}
+.poolcontrol-pdv .checkout-item small {
+  font-size: 10px;
+  color: #7989a1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.poolcontrol-pdv .checkout-item > strong {
+  font-size: 11px;
+  white-space: nowrap;
+  margin-left: 6px;
+}
+.poolcontrol-pdv .checkout-item .icon-btn {
+  color: #b5bfcf;
+  width: 24px;
+}
+.poolcontrol-pdv .checkout-item .icon-btn:hover {
+  color: #f33645;
+}
+.poolcontrol-pdv .inline-input {
+  display: flex;
+  gap: 6px;
+}
+.poolcontrol-pdv .inline-input > svg {
+  position: relative;
+  left: 27px;
+  top: 12px;
+  color: #7a90b7;
+  flex-shrink: 0;
+  margin-left: -20px;
+}
+.poolcontrol-pdv .inline-input input {
+  min-width: 0;
+  flex: 1;
+  border: 1px solid #d9e3f1;
+  border-radius: 7px;
+  height: 38px;
+  padding: 0 10px 0 28px;
+  font-size: 11px;
+}
+.poolcontrol-pdv .inline-input > button {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 9px;
+  background: #e8f1ff;
+  border: 1px solid #b4d0ff;
+  border-radius: 7px;
+  color: #0d60e9;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.poolcontrol-pdv .two-options {
+  display: flex;
+  gap: 8px;
+}
+.poolcontrol-pdv .two-options button {
+  flex: 1;
+  padding: 9px 5px;
+  background: white;
+  border: 1px solid #dbe5f2;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: #243b61;
+}
+.poolcontrol-pdv .two-options button.selected {
+  color: #1259f5;
+  border-color: #4f8dff;
+  background: #eff5ff;
+  box-shadow: inset 0 0 0 1px #c3d7ff;
+}
+.poolcontrol-pdv .mini-tabs {
+  display: flex;
+  align-items: center;
+  background: #f1f4f8;
+  margin-top: 2px;
+  border-radius: 6px;
+}
+.poolcontrol-pdv .mini-tabs button {
+  flex: 1;
+  padding: 6px;
+  background: transparent;
+  font-size: 10px;
+  color: #697c96;
+}
+.poolcontrol-pdv .mini-tabs button.active {
+  color: #1964f9;
+  background: #eaf2ff;
+  border-bottom: 2px solid #0d62ef;
+}
+.poolcontrol-pdv .address-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 9px;
+}
+.poolcontrol-pdv .address-grid label {
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #1d3155;
+}
+.poolcontrol-pdv .address-grid label input {
+  height: 34px;
+  border: 1px solid #d8e2f0;
+  border-radius: 7px;
+  padding: 7px 9px;
+  font-size: 11px;
+  min-width: 0;
+  width: 100%;
+}
+.poolcontrol-pdv .address-grid .address-wide {
+  grid-column: span 2;
+}
+.poolcontrol-pdv .address-grid .address-full {
+  grid-column: span 3;
+}
+.poolcontrol-pdv .totals {
+  margin-top: 5px;
+  border: 1px solid #edf0f7;
+  border-radius: 7px;
+  overflow: hidden;
+  padding-top: 5px;
+}
+.poolcontrol-pdv .totals p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #5c6b82;
+  padding: 4px 10px;
+}
+.poolcontrol-pdv .totals p b {
+  color: #21314f;
+  font-size: 11px;
+  font-weight: 500;
+}
+.poolcontrol-pdv .totals p button {
+  color: #f13b51;
+  background: none;
+  font-size: 11px;
+}
+.poolcontrol-pdv .apply-coupon {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: transparent;
+  color: #1268fc;
+  font-size: 11px;
+  margin: 4px 10px;
+}
+.poolcontrol-pdv .totals-total {
+  background: #e9f3ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #1459e8;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.poolcontrol-pdv .totals-total strong {
+  font-size: 20px;
+}
+.poolcontrol-pdv .payment-choices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.poolcontrol-pdv .payment-choices button {
+  border: 1px solid #dfe6f2;
+  border-radius: 7px;
+  background: #f5f8fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 3px;
+  font-size: 11px;
+  color: #18345e;
+}
+.poolcontrol-pdv .payment-choices button.selected {
+  background: #e8f0ff;
+  border-color: #6193ff;
+  color: #1359fc;
+}
+.poolcontrol-pdv .payment-choices:not(.payment-big):not(.payment-compact) {
+  grid-template-columns: repeat(3, 1fr);
+}
+.poolcontrol-pdv .payment-compact {
+  grid-template-columns: repeat(4, 1fr);
+}
+.poolcontrol-pdv .green-btn {
+  background: linear-gradient(120deg, #00ad69, #009b5f);
+  color: white;
+}
+.poolcontrol-pdv .orders-content {
+  overflow: auto;
+}
+.poolcontrol-pdv .order-filter-row {
+  display: flex;
+  gap: 6px;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+.poolcontrol-pdv .order-filter-row .chip {
+  padding: 9px 11px;
+}
+.poolcontrol-pdv .orders-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #dfe6f3;
+  padding: 10px;
+  border-radius: 9px;
+  margin-bottom: 14px;
+  color: #8091a8;
+  max-width: 420px;
+}
+.poolcontrol-pdv .orders-search input {
+  border: 0;
+  outline: 0;
+  flex: 1;
+  font-size: 12px;
+}
+.poolcontrol-pdv .order-group {
+  margin-bottom: 18px;
+}
+.poolcontrol-pdv .order-group h3 {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff0f1;
+  color: #b90e22;
+  padding: 12px;
+  border-radius: 6px 6px 0 0;
+}
+.poolcontrol-pdv .order-group.status-Em-preparo h3 {
+  background: #fff6da;
+  color: #9a6d09;
+}
+.poolcontrol-pdv .order-group.status-Saiu-para-entrega h3 {
+  background: #e4f1ff;
+  color: #0964dc;
+}
+.poolcontrol-pdv .order-group.status-Concluído h3 {
+  background: #e6f9ef;
+  color: #078f56;
+}
+.poolcontrol-pdv .order-line {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 55px minmax(110px, 1.5fr) 70px 68px 105px 94px;
+  gap: 8px;
+  align-items: center;
+  background: white;
+  border: 1px solid #edf0f5;
+  border-top: 0;
+  padding: 11px 9px;
+  text-align: left;
+}
+.poolcontrol-pdv .order-line:hover,
+.poolcontrol-pdv .order-line.selected {
+  background: #f8fbff;
+}
+.poolcontrol-pdv .order-line > strong {
+  font-size: 12px;
+}
+.poolcontrol-pdv .order-person {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.poolcontrol-pdv .order-person b {
+  font-size: 11px;
+}
+.poolcontrol-pdv .order-person small {
+  font-size: 9px;
+  color: #73849e;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.poolcontrol-pdv .order-payment {
+  font-size: 10px;
+  color: #1966d8;
+  background: #eff6ff;
+  padding: 6px;
+  border-radius: 6px;
+  text-align: center;
+}
+.poolcontrol-pdv .order-line > b {
+  font-size: 11px;
+}
+.poolcontrol-pdv .order-pill {
+  font-size: 9px;
+  color: #e44d36;
+  background: #fff0f0;
+  padding: 7px;
+  text-align: center;
+  border-radius: 6px;
+}
+.poolcontrol-pdv .order-detail-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 10px;
+  padding: 8px 5px;
+  background: #f2f5fa;
+  border-radius: 5px;
+  color: #345178;
+}
+.poolcontrol-pdv .order-detail-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.poolcontrol-pdv .order-detail-head small {
+  margin-left: auto;
+  color: #65758f;
+}
+.poolcontrol-pdv .pill-warning {
+  font-size: 11px;
+  color: #df352d;
+  background: #ffeded;
+  border-radius: 7px;
+  padding: 8px;
+}
+.poolcontrol-pdv .detail-customer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid #e9eff6;
+  padding-bottom: 15px;
+}
+.poolcontrol-pdv .detail-customer b,
+.poolcontrol-pdv .detail-customer p {
+  font-size: 12px;
+}
+.poolcontrol-pdv .detail-customer small {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4b607e;
+  font-size: 11px;
+}
+.poolcontrol-pdv .detail-customer p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.poolcontrol-pdv .success-label {
+  background: #e5faef;
+  padding: 5px;
+  color: #069459;
+  display: inline-flex;
+  gap: 5px;
+  border-radius: 6px;
+}
+.poolcontrol-pdv .delivery-checkout .empty {
+  min-height: 110px;
+}
+/* Serviços */
+.poolcontrol-pdv .service-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 68%) minmax(315px, 1fr);
+  gap: 8px;
+  min-height: calc(100vh - 81px);
+}
+.poolcontrol-pdv .service-main {
+  padding: 18px;
+  overflow: auto;
+  max-height: calc(100vh - 81px);
+}
+.poolcontrol-pdv .section-title {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 14px;
+}
+.poolcontrol-pdv .section-title h1 {
+  font-size: 22px;
+}
+.poolcontrol-pdv .section-icon {
+  color: #1359ed;
+  display: grid;
+  place-items: center;
+}
+.poolcontrol-pdv .service-main .catalog-header {
+  flex-wrap: wrap;
+}
+.poolcontrol-pdv .service-main .catalog-search {
+  width: 100%;
+  max-width: 100%;
+  flex: 1;
+  height: 38px;
+}
+.poolcontrol-pdv .service-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: 203px;
+  overflow: visible;
+  gap: 8px;
+}
+.poolcontrol-pdv .service-card > img {
+  height: 90px;
+  object-fit: cover;
+  margin: 5px;
+  width: calc(100% - 10px);
+  border-radius: 5px;
+}
+.poolcontrol-pdv .service-card .product-info {
+  padding: 1px 7px 8px;
+}
+.poolcontrol-pdv .service-card .product-info strong {
+  font-size: 11px;
+}
+.poolcontrol-pdv .service-card .duration {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  font-size: 10px;
+  margin-top: 6px;
+  color: #536782;
+}
+.poolcontrol-pdv .service-card .product-price {
+  margin-top: 4px;
+}
+.poolcontrol-pdv .service-card .product-price b {
+  font-size: 14px;
+}
+.poolcontrol-pdv .service-card .add-product {
+  height: 28px;
+  background: #e7eeff;
+  color: #145af1;
+  font-weight: 600;
+}
+.poolcontrol-pdv .service-card .add-product:hover {
+  background: #ccdfff;
+}
+.poolcontrol-pdv .staff-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 7px;
+}
+.poolcontrol-pdv .staff-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid #e8edf4;
+  border-radius: 8px;
+  background: #f9fbfe;
+  min-height: 100px;
+  padding: 8px 2px;
+  color: #173054;
+}
+.poolcontrol-pdv .staff-card.active {
+  border: 1px solid #5785ff;
+  background: #eef4ff;
+}
+.poolcontrol-pdv .staff-emoji {
+  font-size: 36px;
+  background: #ecf3ff;
+  width: 62px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+}
+.poolcontrol-pdv .staff-card b {
+  font-size: 11px;
+  margin-top: 4px;
+}
+.poolcontrol-pdv .staff-card small {
+  font-size: 9px;
+  color: #6c82a1;
+}
+.poolcontrol-pdv .staff-online {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: #0dbb67;
+  border-radius: 100%;
+  top: 7px;
+  right: 8px;
+}
+.poolcontrol-pdv .agenda-header {
+  margin-top: 22px;
+}
+.poolcontrol-pdv .agenda-date {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px;
+  background: #f4f7fd;
+  border-radius: 6px;
+}
+.poolcontrol-pdv .agenda-hours {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 0;
+}
+.poolcontrol-pdv .agenda-hours span {
+  font-size: 10px;
+  color: #627394;
+  padding: 10px 3px;
+}
+.poolcontrol-pdv .agenda-slots {
+  min-height: 83px;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent calc(10% - 1px),
+    #e3eaf4 calc(10% - 1px),
+    #e3eaf4 10%
+  );
+  border-top: 1px solid #e6edf5;
+}
+.poolcontrol-pdv .agenda-event {
+  border-radius: 6px;
+  padding: 8px 5px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #25416b;
+  overflow: hidden;
+}
+.poolcontrol-pdv .agenda-event b {
+  font-size: 10px;
+}
+.poolcontrol-pdv .agenda-event small {
+  font-size: 9px;
+}
+.poolcontrol-pdv .agenda-blue {
+  background: #d9e7ff;
+}
+.poolcontrol-pdv .agenda-green {
+  background: #d7fae7;
+}
+.poolcontrol-pdv .agenda-pink {
+  background: #fbd8f0;
+}
+.poolcontrol-pdv .agenda-amber {
+  background: #fff0cb;
+}
+.poolcontrol-pdv .agenda-purple {
+  background: #e9d8ff;
+}
+.poolcontrol-pdv .service-checkout .checkout-item img {
+  width: 58px;
+  height: 53px;
+}
+.poolcontrol-pdv .service-checkout .checkout-list {
+  max-height: 250px;
+  overflow: auto;
+}
+.poolcontrol-pdv .checkout-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 9px;
+}
+.poolcontrol-pdv .checkout-actions button {
+  min-width: 0;
+}
+.poolcontrol-pdv .money-input {
+  height: 44px;
+  border: 1px solid #88aaff;
+  border-radius: 7px;
+  padding: 10px 14px;
+  color: #152343;
+  font-size: 20px;
+  font-weight: 700;
+}
+.poolcontrol-pdv .quick-money {
+  display: flex;
+  gap: 6px;
+}
+.poolcontrol-pdv .quick-money button {
+  background: #eef3fb;
+  flex: 1;
+  padding: 9px 0;
+  font-size: 11px;
+  border-radius: 6px;
+  color: #294167;
+}
+.poolcontrol-pdv .change-preview {
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 9px 0;
+}
+.poolcontrol-pdv .change-preview b {
+  color: #0cbd61;
+  font-size: 22px;
+}
+.poolcontrol-pdv .bottom-actions {
+  margin-top: 0;
+}
+/* Utility */
+.poolcontrol-pdv .utility-main {
+  padding: 24px 30px 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.poolcontrol-pdv .utility-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  color: #6b7895;
+  margin-bottom: 23px;
+}
+.poolcontrol-pdv .utility-breadcrumb button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  color: #3c5b97;
+}
+.poolcontrol-pdv .utility-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.poolcontrol-pdv .utility-heading h1 {
+  font-size: 28px;
+  letter-spacing: -1px;
+}
+.poolcontrol-pdv .utility-heading p {
+  font-size: 13px;
+  color: #72819c;
+  margin-top: 6px;
+}
+.poolcontrol-pdv .metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.poolcontrol-pdv .metric {
+  background: white;
+  border: 1px solid #e2e9f3;
+  border-radius: 13px;
+  padding: 20px;
+  min-height: 150px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: space-between;
+  gap: 12px;
+}
+.poolcontrol-pdv .metric > span {
+  color: #64758f;
+  font-size: 13px;
+}
+.poolcontrol-pdv .metric > svg {
+  color: #1763e7;
+}
+.poolcontrol-pdv .metric strong {
+  font-size: 26px;
+  letter-spacing: -0.7px;
+}
+.poolcontrol-pdv .metric small {
+  color: #0cae76;
+  font-size: 12px;
+}
+.poolcontrol-pdv .utility-card,
+.poolcontrol-pdv .analytics-card {
+  border: 1px solid #e2e9f3;
+  border-radius: 12px;
+  background: white;
+  padding: 19px;
+  margin-bottom: 22px;
+}
+.poolcontrol-pdv .utility-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 17px;
+}
+.poolcontrol-pdv .utility-card h2,
+.poolcontrol-pdv .analytics-card h2 {
+  font-size: 18px;
+}
+.poolcontrol-pdv .utility-card-top > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.poolcontrol-pdv .utility-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #dfe6f0;
+  padding: 0 12px;
+  border-radius: 7px;
+  height: 39px;
+  color: #8191ad;
+}
+.poolcontrol-pdv .utility-search input {
+  border: 0;
+  outline: 0;
+  font-size: 12px;
+}
+.poolcontrol-pdv .light-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #e4eaf3;
+  border-radius: 7px;
+  background: #f7faff;
+  padding: 11px;
+  color: #324c76;
+  font-size: 12px;
+}
+.poolcontrol-pdv .row-view {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0f6ff;
+  color: #1564e6;
+  border-radius: 6px;
+  padding: 7px 11px;
+}
+.poolcontrol-pdv .report-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.poolcontrol-pdv .report-cards button {
+  background: #f6f9ff;
+  border: 1px solid #e5ecf6;
+  border-radius: 11px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  color: #263b60;
+}
+.poolcontrol-pdv .report-cards svg {
+  color: #1364f6;
+}
+.poolcontrol-pdv .report-cards small {
+  color: #6d7e9a;
+}
+.poolcontrol-pdv .demo-chart {
+  height: 230px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 15px;
+  align-items: end;
+  padding: 22px 6px;
+}
+.poolcontrol-pdv .chart-column {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+.poolcontrol-pdv .chart-column span {
+  width: 100%;
+  max-width: 60px;
+  background: linear-gradient(180deg, #247cff, #adc9ff);
+  border-radius: 6px 6px 0 0;
+}
+.poolcontrol-pdv .chart-column small {
+  font-size: 9px;
+  color: #8a97b0;
+}
+.poolcontrol-pdv .chart-footer {
+  display: flex;
+  gap: 40px;
+  border-top: 1px solid #e7edf5;
+  padding: 19px 0 0;
+}
+.poolcontrol-pdv .chart-footer span {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 12px;
+  color: #6e7e97;
+}
+.poolcontrol-pdv .chart-footer b {
+  font-size: 15px;
+  color: #1b2c48;
+}
+.poolcontrol-pdv .delivery-monitor {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 17px;
+  margin-bottom: 20px;
+}
+.poolcontrol-pdv .demo-map {
+  height: 430px;
+  background: linear-gradient(
+    32deg,
+    #e1f0e4 24%,
+    #f1f2ea 24% 30%,
+    #dfede9 30% 54%,
+    #e9eee6 54%
+  );
+  border: 1px solid #d8e8dc;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.poolcontrol-pdv .map-streets {
+  position: absolute;
+  inset: -20%;
+  background:
+    repeating-linear-gradient(
+      25deg,
+      transparent,
+      transparent 58px,
+      #fff 59px,
+      #fff 72px,
+      transparent 73px,
+      transparent 120px
+    ),
+    repeating-linear-gradient(
+      120deg,
+      transparent,
+      transparent 90px,
+      #fff 92px,
+      #fff 102px,
+      transparent 103px,
+      transparent 175px
+    );
+  opacity: 0.85;
+}
+.poolcontrol-pdv .map-marker {
+  position: absolute;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 10px 14px;
+  background: #1168f7;
+  color: white;
+  box-shadow: 0 8px 22px #0003;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.poolcontrol-pdv .marker-one {
+  top: 22%;
+  left: 35%;
+}
+.poolcontrol-pdv .marker-two {
+  top: 53%;
+  left: 67%;
+  background: #12a875;
+}
+.poolcontrol-pdv .marker-three {
+  top: 70%;
+  left: 20%;
+  background: #ec9526;
+}
+.poolcontrol-pdv .map-warning {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  text-align: center;
+  border-radius: 9px;
+  background: #ffffffe8;
+  padding: 12px;
+  color: #4a5e7b;
+  font-size: 11px;
+}
+.poolcontrol-pdv .driver-list {
+  background: white;
+  border: 1px solid #e2e9f3;
+  border-radius: 12px;
+  padding: 18px;
+}
+.poolcontrol-pdv .driver-list h3 {
+  font-size: 17px;
+  margin-bottom: 15px;
+}
+.poolcontrol-pdv .driver-list > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #edf1f5;
+  padding: 14px 0;
+}
+.poolcontrol-pdv .driver-avatar {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  background: #e9f1ff;
+  border-radius: 50%;
+  color: #125bed;
+}
+.poolcontrol-pdv .driver-list > div > span:nth-child(2) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.poolcontrol-pdv .driver-list b,
+.poolcontrol-pdv .driver-list strong {
+  font-size: 12px;
+}
+.poolcontrol-pdv .driver-list small {
+  font-size: 11px;
+  color: #7b8ca6;
+}
+.poolcontrol-pdv .driver-status {
+  color: #07975e;
+  font-size: 11px;
+}
+.poolcontrol-pdv .settings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.poolcontrol-pdv .settings-grid button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+  text-align: left;
+  min-height: 180px;
+  border: 1px solid #e0e8f4;
+  border-radius: 13px;
+  background: white;
+  padding: 21px;
+}
+.poolcontrol-pdv .settings-grid button > span {
+  color: #135ffc;
+  background: #eef4ff;
+  width: 51px;
+  height: 51px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+}
+.poolcontrol-pdv .settings-grid b {
+  font-size: 16px;
+}
+.poolcontrol-pdv .settings-grid small {
+  font-size: 12px;
+  color: #7889a5;
+}
+.poolcontrol-pdv .settings-grid button > svg {
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  color: #98a9bf;
+}
+/* Modal & common */
+.poolcontrol-pdv .empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  color: #8293ae;
+  text-align: center;
+  min-height: 190px;
+}
+.poolcontrol-pdv .empty > strong {
+  font-size: 13px;
+  color: #243958;
+}
+.poolcontrol-pdv .empty small {
+  font-size: 11px;
+}
+.poolcontrol-pdv .modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: #09193199;
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.poolcontrol-pdv .modal {
+  width: min(100%, 720px);
+  max-height: min(92vh, 900px);
+  overflow: auto;
+  background: white;
+  color: #0c1d3e;
+  border-radius: 16px;
+  position: relative;
+  padding: 29px;
+  box-shadow: 0 25px 80px #0004;
+}
+.poolcontrol-pdv .modal:not(.payment-modal) {
+  max-width: 690px;
+}
+.poolcontrol-pdv .modal-close {
+  position: absolute;
+  right: 23px;
+  top: 23px;
+  background: #f5f8fd;
+  color: #253e6a;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+.poolcontrol-pdv .modal h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 25px;
+  letter-spacing: -0.5px;
+  padding-right: 34px;
+  margin-bottom: 24px;
+}
+.poolcontrol-pdv .modal > p {
+  color: #637491;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.poolcontrol-pdv .shortcut-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 15px;
+}
+.poolcontrol-pdv .shortcut-grid > div {
+  border: 1px solid #e1e8f3;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+  min-height: 85px;
+}
+.poolcontrol-pdv .shortcut-grid kbd {
+  background: #e9eeff;
+  color: #1742ac;
+  font-size: 16px;
+  min-width: 52px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 7px;
+  font-weight: 700;
+}
+.poolcontrol-pdv .shortcut-grid > div > span {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.poolcontrol-pdv .shortcut-grid strong {
+  font-size: 13px;
+}
+.poolcontrol-pdv .shortcut-grid small {
+  font-size: 12px;
+  color: #7889a7;
+  line-height: 1.4;
+}
+.poolcontrol-pdv .modal-note {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #657da9 !important;
+  border-top: 1px solid #e8edf6;
+  padding-top: 18px;
+}
+.poolcontrol-pdv .payment-modal {
+  max-width: 675px;
+}
+.poolcontrol-pdv .payment-amount {
+  padding: 22px 26px;
+  background: #f0f2ff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 23px;
+}
+.poolcontrol-pdv .payment-amount span {
+  color: #60739b;
+  font-size: 19px;
+  font-weight: 600;
+}
+.poolcontrol-pdv .payment-amount strong {
+  font-size: 42px;
+  color: #3934fa;
+  letter-spacing: -1px;
+}
+.poolcontrol-pdv .payment-modal h3 {
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+.poolcontrol-pdv .payment-big {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.poolcontrol-pdv .payment-big button {
+  padding: 26px 10px 18px;
+  height: 125px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  background: white;
+  position: relative;
+}
+.poolcontrol-pdv .payment-big button span {
+  display: grid;
+  place-items: center;
+  background: #eef2ff;
+  color: #3c40f7;
+  border-radius: 50%;
+  height: 47px;
+  width: 47px;
+}
+.poolcontrol-pdv .payment-big button.selected {
+  border-color: #4444ff;
+  background: #f6f6ff;
+  box-shadow: 0 0 0 1px #6566ff;
+}
+.poolcontrol-pdv .payment-big .choice-radio {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #c9d4e7;
+  border-radius: 50%;
+}
+.poolcontrol-pdv .payment-big button.selected .choice-radio {
+  background: #4a45f7;
+  border: 4px solid #e7e6ff;
+}
+.poolcontrol-pdv .payment-label {
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.poolcontrol-pdv .received-input {
+  display: flex;
+  border: 1px solid #d4dff1;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 60px;
+}
+.poolcontrol-pdv .received-input span {
+  padding: 17px;
+  background: #f4f7fe;
+  color: #667799;
+  font-size: 19px;
+}
+.poolcontrol-pdv .received-input input {
+  border: 0;
+  outline: 0;
+  flex: 1;
+  padding: 8px 18px;
+  font-size: 26px;
+  min-width: 0;
+}
+.poolcontrol-pdv .change-panel {
+  background: #e7faf1;
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 24px;
+  margin: 18px 0 10px;
+}
+.poolcontrol-pdv .change-panel span {
+  font-size: 17px;
+  color: #698d7e;
+  font-weight: 700;
+}
+.poolcontrol-pdv .change-panel strong {
+  font-size: 39px;
+  letter-spacing: -0.7px;
+  color: #08aa66;
+}
+.poolcontrol-pdv .split-btn {
+  width: 100%;
+  background: #f2f4ff;
+  color: #4733fa;
+  border-radius: 9px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.poolcontrol-pdv .modal-footer {
+  display: flex;
+  gap: 12px;
+  margin-top: 21px;
+}
+.poolcontrol-pdv .modal-footer > button {
+  flex: 1;
+  padding: 13px;
+  border: 1px solid #e0e6f0;
+  border-radius: 8px;
+  background: #fff;
+  color: #62718c;
+  font-weight: 700;
+  min-height: 47px;
+}
+.poolcontrol-pdv .modal-footer .primary-btn {
+  border: 0;
+  color: white;
+  background: #08b768;
+}
+.poolcontrol-pdv .modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 12px 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+.poolcontrol-pdv .modal-field input,
+.poolcontrol-pdv .modal-field select {
+  height: 45px;
+  padding: 0 12px;
+  border: 1px solid #dce6f4;
+  border-radius: 8px;
+  background: white;
+}
+.poolcontrol-pdv .suggested-customers {
+  margin-top: 16px;
+  max-height: 200px;
+  overflow: auto;
+}
+.poolcontrol-pdv .suggested-customers button {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 12px;
+  border-bottom: 1px solid #eef2f8;
+  background: white;
+  width: 100%;
+  text-align: left;
+  font-size: 13px;
+}
+.poolcontrol-pdv .suggested-customers button svg:last-child {
+  margin-left: auto;
+}
+.poolcontrol-pdv .toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 90;
+  background: #0e9d6c;
+  color: #fff;
+  min-width: 270px;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 13px 30px #0003;
+  padding: 15px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.poolcontrol-pdv .toast button {
+  margin-left: auto;
+  background: none;
+  color: white;
+}
+.poolcontrol-pdv .filter-buttons {
+  display: flex;
+  gap: 7px;
+}
+@media (max-width: 1400px) {
+  .poolcontrol-pdv .topbar {
+    gap: 9px;
+  }
+  .poolcontrol-pdv .dashboard-layout {
+    grid-template-columns: 205px 1fr;
+  }
+  .poolcontrol-pdv .module-grid {
+    gap: 10px;
+  }
+  .poolcontrol-pdv .module-card {
+    height: 360px;
+  }
+  .poolcontrol-pdv .module-icon {
+    width: 56px;
+    height: 56px;
+  }
+  .poolcontrol-pdv .module-bottom {
+    padding: 11px;
+  }
+  .poolcontrol-pdv .module-bottom h2 {
+    font-size: 23px;
+  }
+  .poolcontrol-pdv .module-bottom p {
+    font-size: 12px;
+  }
+  .poolcontrol-pdv .tool-group {
+    padding: 8px;
+  }
+  .poolcontrol-pdv .tool-link-icon {
+    width: 33px;
+    height: 37px;
+  }
+  .poolcontrol-pdv .tool-link strong {
+    font-size: 10.5px;
+  }
+  .poolcontrol-pdv .tool-link small {
+    font-size: 9px;
+  }
+  .poolcontrol-pdv .tool-group h3 {
+    font-size: 11px;
+  }
+  .poolcontrol-pdv .mode-tab {
+    padding: 9px;
+  }
+  .poolcontrol-pdv .work-topbar .user-switch > span:not(.avatar) {
+    display: none;
+  }
+  .poolcontrol-pdv .service-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .poolcontrol-pdv .catalog-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .poolcontrol-pdv .food-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .poolcontrol-pdv .checkout {
+    padding: 13px;
+  }
+  .poolcontrol-pdv .order-line {
+    grid-template-columns: 50px minmax(100px, 1.5fr) 60px 68px 100px;
+  }
+  .poolcontrol-pdv .order-detail-button {
+    display: none;
+  }
+}
+@media (max-width: 1130px) {
+  .poolcontrol-pdv .dashboard-layout {
+    grid-template-columns: 70px 1fr;
+  }
+  .poolcontrol-pdv .sidebar {
+    padding: 12px 8px;
+  }
+  .poolcontrol-pdv .sidebar nav button {
+    justify-content: center;
+    padding: 0;
+    font-size: 0;
+  }
+  .poolcontrol-pdv .sidebar nav button svg {
+    flex-shrink: 0;
+  }
+  .poolcontrol-pdv .sidebar-help {
+    font-size: 0;
+    justify-content: center;
+  }
+  .poolcontrol-pdv .module-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .poolcontrol-pdv .module-card {
+    height: 370px;
+  }
+  .poolcontrol-pdv .tools-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .poolcontrol-pdv .global-search {
+    margin-left: 0;
+  }
+  .poolcontrol-pdv .date-box {
+    display: none;
+  }
+  .poolcontrol-pdv .mode-tab span {
+    display: none;
+  }
+  .poolcontrol-pdv .mode-tab {
+    padding: 11px 13px;
+  }
+  .poolcontrol-pdv .pos-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 39%);
+  }
+  .poolcontrol-pdv .sale-item {
+    flex-wrap: wrap;
+  }
+  .poolcontrol-pdv .sale-item .qty-control {
+    order: 5;
+  }
+  .poolcontrol-pdv .sale-item .icon-btn {
+    order: 6;
+  }
+  .poolcontrol-pdv .sale-item-price {
+    margin-left: auto;
+  }
+  .poolcontrol-pdv .service-layout {
+    grid-template-columns: 1fr;
+  }
+  .poolcontrol-pdv .service-main {
+    max-height: none;
+  }
+  .poolcontrol-pdv .service-checkout {
+    min-height: 450px;
+  }
+  .poolcontrol-pdv .delivery-layout {
+    grid-template-columns: 1fr;
+  }
+  .poolcontrol-pdv .delivery-left {
+    max-height: none;
+  }
+  .poolcontrol-pdv .delivery-checkout {
+    min-height: 400px;
+  }
+  .poolcontrol-pdv .catalog-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .poolcontrol-pdv .topbar {
+    height: 62px;
+    padding: 0 12px;
+    gap: 7px;
+  }
+  .poolcontrol-pdv .dashboard-topbar .brand strong {
+    font-size: 25px;
+  }
+  .poolcontrol-pdv .dashboard-topbar .global-search {
+    display: none;
+  }
+  .poolcontrol-pdv .store-switch {
+    display: none;
+  }
+  .poolcontrol-pdv .user-switch {
+    margin-left: auto;
+  }
+  .poolcontrol-pdv .dashboard-layout {
+    grid-template-columns: 1fr;
+    min-height: calc(100vh - 62px);
+  }
+  .poolcontrol-pdv .sidebar {
+    display: none;
+    position: absolute;
+    top: 62px;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    max-width: 250px;
+    border-radius: 0 0 12px 0;
+  }
+  .poolcontrol-pdv .sidebar.show {
+    display: flex;
+  }
+  .poolcontrol-pdv .sidebar nav button {
+    font-size: 13px;
+    justify-content: flex-start;
+    padding: 0 17px;
+  }
+  .poolcontrol-pdv .sidebar-help {
+    font-size: 12px;
+    justify-content: flex-start;
+  }
+  .poolcontrol-pdv .dashboard-main {
+    padding: 15px 9px;
+  }
+  .poolcontrol-pdv .mobile-menu {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: #112d4b;
+    color: white;
+    border-radius: 6px;
+    padding: 9px;
+    margin-bottom: 15px;
+    font-size: 12px;
+  }
+  .poolcontrol-pdv .welcome-title h1 {
+    font-size: 21px;
+  }
+  .poolcontrol-pdv .welcome-title p {
+    font-size: 12px;
+  }
+  .poolcontrol-pdv .wave {
+    font-size: 30px;
+  }
+  .poolcontrol-pdv .module-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    margin: 0 0 15px;
+  }
+  .poolcontrol-pdv .module-card {
+    height: 320px;
+  }
+  .poolcontrol-pdv .module-bottom h2 {
+    font-size: 21px;
+  }
+  .poolcontrol-pdv .module-bottom p {
+    font-size: 11px;
+    min-height: 54px;
+  }
+  .poolcontrol-pdv .module-icon {
+    width: 43px;
+    height: 43px;
+  }
+  .poolcontrol-pdv .module-icon svg {
+    width: 24px;
+  }
+  .poolcontrol-pdv .enter {
+    font-size: 13px;
+    padding: 10px;
+  }
+  .poolcontrol-pdv .tools-grid {
+    grid-template-columns: 1fr;
+  }
+  .poolcontrol-pdv .tools-heading h2 {
+    font-size: 15px;
+  }
+  .poolcontrol-pdv .tools-heading p {
+    font-size: 10px;
+  }
+  .poolcontrol-pdv .tools-heading > button {
+    font-size: 0;
+    padding: 10px;
+  }
+  .poolcontrol-pdv .work-topbar {
+    height: 58px;
+    padding: 0 8px;
+  }
+  .poolcontrol-pdv .work-topbar .brand .online {
+    display: none;
+  }
+  .poolcontrol-pdv .work-topbar .brand strong {
+    font-size: 20px;
+  }
+  .poolcontrol-pdv .mode-tabs {
+    margin-left: 0;
+    flex: 1;
+  }
+  .poolcontrol-pdv .mode-tab {
+    height: 38px;
+    padding: 9px;
+  }
+  .poolcontrol-pdv .work-search-button,
+  .poolcontrol-pdv .cashier,
+  .poolcontrol-pdv .work-topbar > .icon-btn {
+    display: none;
+  }
+  .poolcontrol-pdv .work-topbar .user-switch {
+    margin-left: 0;
+  }
+  .poolcontrol-pdv .work-topbar .avatar {
+    width: 29px;
+    height: 29px;
+    font-size: 11px;
+  }
+  .poolcontrol-pdv .work-main {
+    padding: 6px;
+  }
+  .poolcontrol-pdv .pos-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .poolcontrol-pdv .sale-panel {
+    min-height: 0;
+  }
+  .poolcontrol-pdv .sale-items {
+    max-height: 340px;
+  }
+  .poolcontrol-pdv .sale-bottom {
+    margin-top: 10px;
+  }
+  .poolcontrol-pdv .work-content {
+    min-height: 400px;
+    padding: 12px;
+  }
+  .poolcontrol-pdv .catalog-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .poolcontrol-pdv .catalog-search {
+    width: 100%;
+    max-width: 100%;
+  }
+  .poolcontrol-pdv .catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .poolcontrol-pdv .product-card > img {
+    height: 115px;
+  }
+  .poolcontrol-pdv .product-price b {
+    font-size: 13px;
+  }
+  .poolcontrol-pdv .food-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 228px;
+  }
+  .poolcontrol-pdv .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 198px;
+  }
+  .poolcontrol-pdv .staff-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .poolcontrol-pdv .service-main {
+    padding: 12px;
+  }
+  .poolcontrol-pdv .service-checkout {
+    padding: 12px;
+  }
+  .poolcontrol-pdv .delivery-left {
+    padding: 10px;
+  }
+  .poolcontrol-pdv .segment button {
+    min-width: 0;
+    flex: 1;
+  }
+  .poolcontrol-pdv .delivery-checkout {
+    padding: 12px;
+  }
+  .poolcontrol-pdv .order-line {
+    grid-template-columns: 47px minmax(0, 1fr) 60px;
+    gap: 5px;
+  }
+  .poolcontrol-pdv .order-line > span:nth-last-child(2),
+  .poolcontrol-pdv .order-payment {
+    display: none;
+  }
+  .poolcontrol-pdv .tables-work {
+    grid-template-columns: 1fr;
+  }
+  .poolcontrol-pdv .tables-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .poolcontrol-pdv .market-summary {
+    gap: 12px;
+    overflow: auto;
+  }
+  .poolcontrol-pdv .market-summary strong {
+    font-size: 17px;
+  }
+  .poolcontrol-pdv .card-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .poolcontrol-pdv .utility-main {
+    padding: 16px 10px;
+  }
+  .poolcontrol-pdv .utility-heading h1 {
+    font-size: 22px;
+  }
+  .poolcontrol-pdv .utility-heading .primary-btn {
+    font-size: 11px;
+    min-height: 36px;
+    padding: 8px;
+  }
+  .poolcontrol-pdv .metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .poolcontrol-pdv .metric {
+    min-height: 130px;
+    padding: 14px;
+  }
+  .poolcontrol-pdv .metric strong {
+    font-size: 18px;
+  }
+  .poolcontrol-pdv .utility-card {
+    padding: 10px;
+  }
+  .poolcontrol-pdv .utility-card-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .poolcontrol-pdv .utility-card-top > div {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .poolcontrol-pdv .settings-grid,
+  .poolcontrol-pdv .report-cards {
+    grid-template-columns: 1fr;
+  }
+  .poolcontrol-pdv .delivery-monitor {
+    grid-template-columns: 1fr;
+  }
+  .poolcontrol-pdv .modal {
+    padding: 21px 17px;
+  }
+  .poolcontrol-pdv .shortcut-grid {
+    grid-template-columns: 1fr;
+  }
+  .poolcontrol-pdv .payment-amount strong {
+    font-size: 31px;
+  }
+  .poolcontrol-pdv .payment-big {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .poolcontrol-pdv .payment-big button {
+    height: 88px;
+    padding: 12px;
+  }
+  .poolcontrol-pdv .received-input {
+    height: 51px;
+  }
+  .poolcontrol-pdv .change-panel strong {
+    font-size: 30px;
+  }
+  .poolcontrol-pdv .modal-footer {
+    flex-wrap: wrap;
+  }
+  .poolcontrol-pdv .modal-footer button {
+    font-size: 12px;
+  }
+}
+@media (max-width: 385px) {
+  .poolcontrol-pdv .module-grid {
+    grid-template-columns: 1fr;
+  }
+  .poolcontrol-pdv .module-card {
+    height: 345px;
+  }
+  .poolcontrol-pdv .module-card:before {
+    background-size: 100% 75%;
+  }
+  .poolcontrol-pdv .module-bottom p {
+    min-height: auto;
+  }
+  .poolcontrol-pdv .modal h2 {
+    font-size: 20px;
+  }
+  .poolcontrol-pdv .payment-choices:not(.payment-big) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Operational controls use the PoolControl navigation and user menu. */
+.poolcontrol-pdv .pdv-operation-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: #071729;
+  color: white;
+  border-bottom: 1px solid #193047;
+}
+
+.poolcontrol-pdv .pdv-operation-toolbar .mode-tabs {
+  flex: 1 1 520px;
+  min-width: 0;
+  margin-left: 0;
+}
+
+/* Keep standalone operations within the viewport, with scrolling in the workspace. */
+:is(.pdv-standalone, .pdv-embedded) .poolcontrol-pdv .app.is-work {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  min-height: 0;
+}
+
+:is(.pdv-standalone, .pdv-embedded) .pdv-operation-toolbar {
+  flex-shrink: 0;
+}
+
+:is(.pdv-standalone, .pdv-embedded) .poolcontrol-pdv .work-main {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+}
+
+:is(.pdv-standalone, .pdv-embedded) .poolcontrol-pdv .pos-layout,
+:is(.pdv-standalone, .pdv-embedded) .poolcontrol-pdv .delivery-layout,
+:is(.pdv-standalone, .pdv-embedded) .poolcontrol-pdv .service-layout {
+  min-height: 100%;
+}
+
+:is(.pdv-standalone, .pdv-embedded) .poolcontrol-pdv .sale-panel {
+  min-height: 0;
+}
+
+.pdv-embedded .poolcontrol-pdv .app.is-work {
+  height: calc(100dvh - 96px);
+}
