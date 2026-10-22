@@ -6,12 +6,8 @@
   "outputDirectory": "public",
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/index.html"
-    },
-    {
       "source": "/:path*",
-      "destination": "https://hewlett-latino-including-councils.trycloudflare.com/:path*"
+      "destination": "https://apply-bumper-aim-returned.trycloudflare.com/:path*"
     }
   ]
 }
