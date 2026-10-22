@@ -9,5 +9,12 @@
       "source": "/:path*",
       "destination": "https://apply-bumper-aim-returned.trycloudflare.com/:path*"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/inicio",
+      "permanent": false
+    }
   ]
 }
